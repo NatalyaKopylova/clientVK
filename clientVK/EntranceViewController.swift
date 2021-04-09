@@ -8,12 +8,45 @@
 import UIKit
 
 class EntranceViewController: UIViewController {
-
+    
+    @IBOutlet weak var loginTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    
+    let loginTabBarSegue = "loginTabBarSegue"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
+    
+    func alertWindowError(alertText: String){
+        let alertController = UIAlertController(title: "Ошибка", message: alertText, preferredStyle: UIAlertController.Style.alert)
+        let actionButton = UIAlertAction(title: "Ok", style: UIAlertAction.Style.cancel, handler: {_ in
+            self.loginTextField.text = ""
+            self.passwordTextField.text = ""
+        })
+        alertController.addAction(actionButton)
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    @IBAction func loginTouch(_ sender: UIButton) {
+        guard let login = self.loginTextField.text,
+              let password = self.passwordTextField.text,
+              login.trimmingCharacters(in: .whitespacesAndNewlines) == "admin",
+              password.trimmingCharacters(in: .whitespacesAndNewlines) == "123"
+              else {
+            alertWindowError(alertText: "Неправильный логин или пароль")
+            return
+             }
+        performSegue(withIdentifier: self.loginTabBarSegue, sender: self)
+        
+        
+    }
+    
+
+   
 
 
+    
 }
 
