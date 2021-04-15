@@ -13,7 +13,11 @@ class EntranceViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     
     let loginTabBarSegue = "loginTabBarSegue"
-    
+       
+    @IBAction func exit(_seg: UIStoryboardSegue){}
+
+    @IBAction func exit2(_seg: UIStoryboardSegue) {}
+      
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -39,14 +43,6 @@ class EntranceViewController: UIViewController {
             return
              }
         performSegue(withIdentifier: self.loginTabBarSegue, sender: self)
-        
-        
     }
-    
-
-   
-
-
-    
 }
 
