@@ -14,7 +14,6 @@ class MyGroupTableViewController: UITableViewController {
         
         let nib = UINib(nibName: String(describing: GroupTableViewCell.self), bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: String(describing: GroupTableViewCell.self))
-
     }
     
     override func viewWillAppear(_ animated: Bool) {

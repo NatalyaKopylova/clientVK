@@ -35,7 +35,6 @@ class UserPhotoCollectionViewController: UICollectionViewController, UICollectio
         return 1
     }
 
-
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
         return photos.count

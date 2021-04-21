@@ -9,7 +9,7 @@ import UIKit
 
 class UserTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var avatar: UIImageView!
+    @IBOutlet weak var avatar: AvatarRoundedView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var ageLabel: UILabel!
 }
