@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		A908286A263040C5008D0673 /* FirstLetterSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9082869263040C5008D0673 /* FirstLetterSectionHeaderView.swift */; };
+		A908286E2631745D008D0673 /* NewsScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A908286D2631745D008D0673 /* NewsScreenViewController.swift */; };
+		A9082876263186F5008D0673 /* MyButtonNewsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9082875263186F5008D0673 /* MyButtonNewsScreen.swift */; };
+		A908287926318FF0008D0673 /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A908287826318FF0008D0673 /* NewsTableViewCell.swift */; };
+		A908287C2631F33B008D0673 /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = A908287B2631F33B008D0673 /* News.swift */; };
+		A90828802632D8D4008D0673 /* MosaicLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A908287F2632D8D4008D0673 /* MosaicLayout.swift */; };
+		A908288326344369008D0673 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A908288226344369008D0673 /* PhotoCollectionViewCell.swift */; };
 		A91047D92627188700B216DB /* GroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91047D72627188700B216DB /* GroupTableViewCell.swift */; };
 		A91047DA2627188700B216DB /* GroupTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A91047D82627188700B216DB /* GroupTableViewCell.xib */; };
 		A91047DD26285EB600B216DB /* MyGroupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91047DC26285EB600B216DB /* MyGroupTableViewController.swift */; };
@@ -33,6 +39,12 @@
 
 /* Begin PBXFileReference section */
 		A9082869263040C5008D0673 /* FirstLetterSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstLetterSectionHeaderView.swift; sourceTree = "<group>"; };
+		A908286D2631745D008D0673 /* NewsScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsScreenViewController.swift; sourceTree = "<group>"; };
+		A9082875263186F5008D0673 /* MyButtonNewsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyButtonNewsScreen.swift; sourceTree = "<group>"; };
+		A908287826318FF0008D0673 /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
+		A908287B2631F33B008D0673 /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
+		A908287F2632D8D4008D0673 /* MosaicLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MosaicLayout.swift; sourceTree = "<group>"; };
+		A908288226344369008D0673 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		A91047D72627188700B216DB /* GroupTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupTableViewCell.swift; sourceTree = "<group>"; };
 		A91047D82627188700B216DB /* GroupTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroupTableViewCell.xib; sourceTree = "<group>"; };
 		A91047DC26285EB600B216DB /* MyGroupTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGroupTableViewController.swift; sourceTree = "<group>"; };
@@ -69,12 +81,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A908286C26317401008D0673 /* NewsScreen */ = {
+			isa = PBXGroup;
+			children = (
+				A908286D2631745D008D0673 /* NewsScreenViewController.swift */,
+				A908287826318FF0008D0673 /* NewsTableViewCell.swift */,
+				A908287F2632D8D4008D0673 /* MosaicLayout.swift */,
+				A908288226344369008D0673 /* PhotoCollectionViewCell.swift */,
+			);
+			path = NewsScreen;
+			sourceTree = "<group>";
+		};
 		A97C217B262D88CC0011D868 /* UIComponents */ = {
 			isa = PBXGroup;
 			children = (
 				A9A37B00262DB47E0080E6AE /* Avatar */,
 				A97C217C262D88EE0011D868 /* LikeCountView */,
 				A9082869263040C5008D0673 /* FirstLetterSectionHeaderView.swift */,
+				A9082875263186F5008D0673 /* MyButtonNewsScreen.swift */,
 			);
 			path = UIComponents;
 			sourceTree = "<group>";
@@ -120,13 +144,14 @@
 				A9DAF5C2261B0B4600C7BCB5 /* AppDelegate.swift */,
 				A9DAF5C4261B0B4600C7BCB5 /* SceneDelegate.swift */,
 				A9DAF5C6261B0B4600C7BCB5 /* EntranceViewController.swift */,
-				A9DAF5C8261B0B4600C7BCB5 /* Main.storyboard */,
 				A9DAF5E526258AB600C7BCB5 /* TabBarController.swift */,
+				A9DAF5C8261B0B4600C7BCB5 /* Main.storyboard */,
 				A9DAF5CB261B0B4800C7BCB5 /* Assets.xcassets */,
 				A9DAF5CD261B0B4800C7BCB5 /* LaunchScreen.storyboard */,
 				A9DAF5D0261B0B4800C7BCB5 /* Info.plist */,
 				A9DAF6002626D0AB00C7BCB5 /* Friends */,
 				A9DAF6012626D0EE00C7BCB5 /* Groups */,
+				A908286C26317401008D0673 /* NewsScreen */,
 			);
 			path = clientVK;
 			sourceTree = "<group>";
@@ -136,6 +161,7 @@
 			children = (
 				A9DAF5E92625920700C7BCB5 /* User.swift */,
 				A9DAF5ED2625989500C7BCB5 /* Group.swift */,
+				A908287B2631F33B008D0673 /* News.swift */,
 				A9DAF5F02625A11600C7BCB5 /* DataStorage.swift */,
 			);
 			path = Model;
@@ -237,20 +263,26 @@
 				A91047DD26285EB600B216DB /* MyGroupTableViewController.swift in Sources */,
 				A9DAF5EE2625989500C7BCB5 /* Group.swift in Sources */,
 				A9DAF5F42625B6B100C7BCB5 /* UserTableViewCell.swift in Sources */,
+				A90828802632D8D4008D0673 /* MosaicLayout.swift in Sources */,
 				A97C2179262D882C0011D868 /* LikeCountView.swift in Sources */,
 				A9DAF5C7261B0B4600C7BCB5 /* EntranceViewController.swift in Sources */,
 				A9A37AFE262DB4160080E6AE /* AvatarRoundedView.swift in Sources */,
+				A908287C2631F33B008D0673 /* News.swift in Sources */,
 				A9DAF5C3261B0B4600C7BCB5 /* AppDelegate.swift in Sources */,
 				A9DAF5FE2625C88300C7BCB5 /* UserPhotosCollectionViewCell.swift in Sources */,
+				A908287926318FF0008D0673 /* NewsTableViewCell.swift in Sources */,
 				A9DAF5F82625B87700C7BCB5 /* FriendsTableViewController.swift in Sources */,
 				A9DAF5F12625A11600C7BCB5 /* DataStorage.swift in Sources */,
 				A97C217E262D89140011D868 /* HeartButton.swift in Sources */,
 				A9DAF5EA2625920700C7BCB5 /* User.swift in Sources */,
 				A908286A263040C5008D0673 /* FirstLetterSectionHeaderView.swift in Sources */,
+				A908286E2631745D008D0673 /* NewsScreenViewController.swift in Sources */,
+				A908288326344369008D0673 /* PhotoCollectionViewCell.swift in Sources */,
 				A9DAF5C5261B0B4600C7BCB5 /* SceneDelegate.swift in Sources */,
 				A9DAF5FB2625BEEB00C7BCB5 /* UserPhotoCollectionViewController.swift in Sources */,
 				A9DAF5E626258AB600C7BCB5 /* TabBarController.swift in Sources */,
 				A91047D92627188700B216DB /* GroupTableViewCell.swift in Sources */,
+				A9082876263186F5008D0673 /* MyButtonNewsScreen.swift in Sources */,
 				A9DAF6032626D18000C7BCB5 /* GroupTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -19,12 +19,15 @@ class DataStorage {
     private init() {
         fillUserArray()
         fillGroupsArray()
+        fillNewsArrey()
     }
     
     var myFrends = [User]()
     
     var allGroups = [Group]()
     var myGroups = [Group]()
+    
+    var newsScreen = [News]()
     
     var friendsWithLetter: [UsersWithLetter] {
         var arr = [UsersWithLetter]()
@@ -87,16 +90,47 @@ class DataStorage {
     
     func fillGroupsArray() {
 
-        let group1 = Group(name: "Cat", description: "Здесь должно быть описание группы", groupImage: UIImage(named: "Cat"))
-        let group2 = Group(name: "Dog", description: "Здесь должно быть описание группы", groupImage: UIImage(named: "Dog"))
+        let group1 = Group(name: "Котики", description: "Здесь должно быть описание группы", groupImage: UIImage(named: "Cat"))
+        let group2 = Group(name: "Собакены", description: "Здесь должно быть описание группы", groupImage: UIImage(named: "Dog"))
         let group3 = Group(name: "Baby", description: "Здесь должно быть описание группы", groupImage: UIImage(named: "Baby"))
-        let group4 = Group(name: "Strolls", description: "Здесь должно быть описание группы", groupImage: UIImage(named: "Strolls"))
-        let group5 = Group(name: "Sports", description: "Здесь должно быть описание группы", groupImage: UIImage(named: "Sports"))
+        let group4 = Group(name: "Прогулка", description: "Здесь должно быть описание группы", groupImage: UIImage(named: "Strolls"))
+        let group5 = Group(name: "Спорт", description: "Здесь должно быть описание группы", groupImage: UIImage(named: "Sports"))
+        let group6 = Group(name: "Любители покушать", description: "Здесь должно быть описание группы", groupImage: UIImage(named: "FoodLovers"))
+        let group7 = Group(name: "Здоровье", description: "Здесь должно быть описание группы", groupImage: UIImage(named: "Health"))
+        let group8 = Group(name: "Хобби", description: "Здесь должно быть описание группы", groupImage: UIImage(named: "Hobby"))
+        let group9 = Group(name: "Достижения", description: "Здесь должно быть описание группы", groupImage: UIImage(named: "Achievements"))
+        let group10 = Group(name: "Соревнования", description: "Здесь должно быть описание группы", groupImage: UIImage(named: "Сompetitions"))
         
         allGroups.append(group1)
         allGroups.append(group2)
         allGroups.append(group3)
         allGroups.append(group4)
         allGroups.append(group5)
+        allGroups.append(group6)
+        allGroups.append(group7)
+        allGroups.append(group8)
+        allGroups.append(group9)
+        allGroups.append(group10)
+        
+        allGroups.sort { $0.name < $1.name }
+    }
+    
+    func filteredGroups(text: String?) -> [Group] {
+        guard let text = text, text.count > 0 else { return allGroups }
+        return allGroups.filter { $0.name.lowercased().contains(text.lowercased()) }
+    }
+    
+    func fillNewsArrey() {
+        let news1 = News(title: "Подойди сюда. Нам давно пора поговорить. Где моя рыбка?!", newsPhotos: [UIImage(named: "conversation")!], like: 100, comment: 0, repost: 0, viewing: 110)
+        let news2 = News(title: "Приветики!", newsPhotos: [UIImage(named: "hello")!, UIImage(named: "conversation")!], like: 100, comment: 2, repost: 0, viewing: 110)
+        let news3 = News(title: "Ну пойдем уже погуляем...", newsPhotos: [UIImage(named: "timeOfGames")!, UIImage(named: "hello")!, UIImage(named: "conversation")!], like: 100, comment: 0, repost: 4, viewing: 110)
+        let news4 = News(title: "Самое время поспать. Уже 11. И не важно, что не ночи.", newsPhotos: [UIImage(named: "sleep")!, UIImage(named: "timeOfGames")!, UIImage(named: "hello")!, UIImage(named: "conversation")!], like: 100, comment: 5, repost: 5, viewing: 115)
+        let news5 = News(title: "Без сомнения, я самый лучший программист. Что тебе нужно подсказать?", newsPhotos: [UIImage(named: "work")!, UIImage(named: "sleep")!, UIImage(named: "timeOfGames")!, UIImage(named: "hello")!, UIImage(named: "conversation")!], like: 99, comment: 4, repost: 0, viewing: 118)
+        
+        newsScreen.append(news1)
+        newsScreen.append(news2)
+        newsScreen.append(news3)
+        newsScreen.append(news4)
+        newsScreen.append(news5)
     }
 }

@@ -7,24 +7,43 @@
 
 import UIKit
 
-class GroupTableViewController: UITableViewController {
+class GroupTableViewController: UITableViewController, UISearchBarDelegate {
 
+    var searchText: String? {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    
+    var groups: [Group] {
+        return DataStorage.shared.filteredGroups(text: searchText)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let nib = UINib(nibName: String(describing: GroupTableViewCell.self), bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: String(describing: GroupTableViewCell.self))
+        
+        let searchBar = UISearchBar()
+        searchBar.frame = CGRect(x: 0, y: 0, width: 200, height: 70)
+        searchBar.delegate = self
+        searchBar.showsCancelButton = true
+        searchBar.searchBarStyle = UISearchBar.Style.default
+        searchBar.placeholder = "Поиск группы"
+        searchBar.sizeToFit()
+        tableView.tableHeaderView = searchBar
     }
 
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {        
-        return DataStorage.shared.allGroups.count
+        return groups.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: GroupTableViewCell.self), for: indexPath) as! GroupTableViewCell
-        let group = DataStorage.shared.allGroups[indexPath.row]
+        let group = groups[indexPath.row]
         
         cell.group = group
         cell.groupNameLabel.text = group.name
@@ -53,5 +72,14 @@ class GroupTableViewController: UITableViewController {
             DataStorage.shared.myGroups.append(group)
         }
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        self.searchText = searchText
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.searchTextField.text = ""
+        searchText = ""
     }
 }

@@ -47,4 +47,5 @@ class MyGroupTableViewController: UITableViewController {
         DataStorage.shared.myGroups.remove(at: indexPath.row)
         self.tableView.reloadData()
     }
+
 }
