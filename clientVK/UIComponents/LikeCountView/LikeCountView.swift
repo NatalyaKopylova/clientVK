@@ -45,7 +45,12 @@ class LikeCountView: UIStackView {
     
     @objc private func didTap() {
         heartButton.isLiked.toggle()
-        countLabel.text = heartButton.isLiked ? "1" : "0"
+        
+        UIView.transition(with: countLabel,
+                          duration: 0.5,
+                          options: .transitionFlipFromTop,
+                          animations: {
+                            self.countLabel.text = self.heartButton.isLiked ? "1" : "0"
+                          })
     }
-
 }

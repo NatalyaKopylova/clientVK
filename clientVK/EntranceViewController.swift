@@ -12,6 +12,8 @@ class EntranceViewController: UIViewController {
     @IBOutlet weak var loginTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
+    @IBOutlet weak var indicatorUIStackView: IndicatorStackView!
+    
     let loginTabBarSegue = "loginTabBarSegue"
        
     @IBAction func exit(_seg: UIStoryboardSegue){}
@@ -21,6 +23,11 @@ class EntranceViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        indicatorUIStackView.startAnimation()
     }
     
     func alertWindowError(alertText: String){

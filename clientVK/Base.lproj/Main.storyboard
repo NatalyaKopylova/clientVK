@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9tC-uz-9gz">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="LMy-yg-VJu">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
@@ -22,7 +22,7 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="login" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wJu-FY-lcf">
-                                        <rect key="frame" x="107" y="336" width="200" height="34"/>
+                                        <rect key="frame" x="107" y="316" width="200" height="34"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="200" id="UOd-1G-19U"/>
                                             <constraint firstAttribute="height" constant="34" id="pHZ-Fz-vQ7"/>
@@ -31,7 +31,7 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r09-4T-ihc">
-                                        <rect key="frame" x="160" y="504" width="94" height="54"/>
+                                        <rect key="frame" x="160" y="484" width="94" height="54"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="54" id="bDZ-0h-poV"/>
                                         </constraints>
@@ -69,7 +69,7 @@
                                         </variation>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xKO-Cg-3yi">
-                                        <rect key="frame" x="107" y="420" width="200" height="34"/>
+                                        <rect key="frame" x="107" y="400" width="200" height="34"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="34" id="3oL-c1-gWo"/>
                                             <constraint firstAttribute="width" constant="220" id="V3i-4f-3aA"/>
@@ -83,19 +83,27 @@
                                             </mask>
                                         </variation>
                                     </textField>
+                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dc1-zI-WOw" customClass="IndicatorStackView" customModule="clientVK" customModuleProvider="target">
+                                        <rect key="frame" x="157" y="196" width="100" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="PZ4-rO-AGE"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemOrangeColor"/>
                                 <constraints>
                                     <constraint firstItem="wJu-FY-lcf" firstAttribute="centerX" secondItem="lsm-7i-Atw" secondAttribute="centerX" id="06Z-YV-7dH"/>
-                                    <constraint firstItem="wJu-FY-lcf" firstAttribute="top" secondItem="39O-Vn-XQK" secondAttribute="bottom" constant="160" id="1zw-zq-ZDQ"/>
+                                    <constraint firstItem="wJu-FY-lcf" firstAttribute="top" secondItem="dc1-zI-WOw" secondAttribute="bottom" constant="90" id="388-HU-HfU"/>
                                     <constraint firstAttribute="trailing" secondItem="on3-ha-809" secondAttribute="trailing" constant="50" id="47a-rt-sdq"/>
                                     <constraint firstItem="on3-ha-809" firstAttribute="top" secondItem="lsm-7i-Atw" secondAttribute="top" constant="32" id="7cO-eR-Vnx"/>
                                     <constraint firstItem="39O-Vn-XQK" firstAttribute="top" secondItem="on3-ha-809" secondAttribute="bottom" constant="42" id="F5D-YT-0Zu"/>
                                     <constraint firstItem="xKO-Cg-3yi" firstAttribute="centerX" secondItem="lsm-7i-Atw" secondAttribute="centerX" id="GEh-6o-c7h"/>
                                     <constraint firstItem="r09-4T-ihc" firstAttribute="centerX" secondItem="lsm-7i-Atw" secondAttribute="centerX" id="Mkl-e4-XYU"/>
+                                    <constraint firstItem="dc1-zI-WOw" firstAttribute="top" secondItem="39O-Vn-XQK" secondAttribute="bottom" constant="20" id="UsA-dK-xiS"/>
                                     <constraint firstItem="on3-ha-809" firstAttribute="centerX" secondItem="lsm-7i-Atw" secondAttribute="centerX" id="aXC-aU-51w"/>
                                     <constraint firstItem="on3-ha-809" firstAttribute="leading" secondItem="lsm-7i-Atw" secondAttribute="leading" constant="50" id="fNQ-vX-O2k"/>
                                     <constraint firstItem="39O-Vn-XQK" firstAttribute="centerX" secondItem="lsm-7i-Atw" secondAttribute="centerX" id="g3b-9m-hkt"/>
+                                    <constraint firstItem="dc1-zI-WOw" firstAttribute="centerX" secondItem="lsm-7i-Atw" secondAttribute="centerX" id="hIa-Mp-kf9"/>
                                     <constraint firstItem="r09-4T-ihc" firstAttribute="top" secondItem="xKO-Cg-3yi" secondAttribute="bottom" constant="50" id="lXZ-Kb-9sR"/>
                                     <constraint firstItem="xKO-Cg-3yi" firstAttribute="top" secondItem="wJu-FY-lcf" secondAttribute="bottom" constant="50" id="oO7-L2-if9"/>
                                     <constraint firstAttribute="bottom" secondItem="r09-4T-ihc" secondAttribute="bottom" constant="150" id="ozL-0H-4RL"/>
@@ -112,6 +120,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="indicatorUIStackView" destination="dc1-zI-WOw" id="KsS-a2-vlL"/>
                         <outlet property="loginTextField" destination="wJu-FY-lcf" id="5B7-Ii-W2H"/>
                         <outlet property="passwordTextField" destination="xKO-Cg-3yi" id="WaR-k7-dvP"/>
                         <segue destination="9tC-uz-9gz" kind="presentation" identifier="loginTabBarSegue" modalPresentationStyle="fullScreen" id="AwZ-LI-crt"/>
@@ -119,7 +128,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wnx-QN-atG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="335" y="-281"/>
+            <point key="canvasLocation" x="334.78260869565219" y="-281.25"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="alF-oo-YvA">
@@ -529,7 +538,7 @@
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="mgf-cz-NAb">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                        <color key="backgroundColor" red="1" green="0.79197168963139608" blue="0.48557941997580722" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Rzj-8G-8x7">
                             <size key="itemSize" width="128" height="128"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -547,7 +556,7 @@
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7Nz-lE-MZy">
                                             <rect key="frame" x="4" y="4" width="120" height="120"/>
                                         </imageView>
-                                        <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hha-jD-cDh" customClass="LikeCountView" customModule="clientVK" customModuleProvider="target">
+                                        <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hha-jD-cDh" customClass="LikeCountView" customModule="clientVK" customModuleProvider="target">
                                             <rect key="frame" x="65" y="90" width="55" height="30"/>
                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             <constraints>

@@ -43,7 +43,7 @@ class UserPhotoCollectionViewController: UICollectionViewController, UICollectio
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: UserPhotosCollectionViewCell.self), for: indexPath) as! UserPhotosCollectionViewCell
         cell.imageView.image = photos[indexPath.row]
-    
+        cell.startAnimate()
         // Configure the cell
     
         return cell

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class GroupTableViewController: UITableViewController, UISearchBarDelegate {
+class GroupTableViewController: UITableViewController, MySearchBarViewDelegate {
 
     var searchText: String? {
         didSet {
@@ -25,14 +25,17 @@ class GroupTableViewController: UITableViewController, UISearchBarDelegate {
         let nib = UINib(nibName: String(describing: GroupTableViewCell.self), bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: String(describing: GroupTableViewCell.self))
         
-        let searchBar = UISearchBar()
-        searchBar.frame = CGRect(x: 0, y: 0, width: 200, height: 70)
+        let searchBarContainer = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 50))
+        let searchBar = MySearchBarView()
+        searchBar.translatesAutoresizingMaskIntoConstraints = false
+        searchBarContainer.addSubview(searchBar)
+        searchBar.topAnchor.constraint(equalTo: searchBarContainer.topAnchor).isActive = true
+        searchBar.bottomAnchor.constraint(equalTo: searchBarContainer.bottomAnchor).isActive = true
+        searchBar.leadingAnchor.constraint(equalTo: searchBarContainer.leadingAnchor).isActive = true
+        searchBar.trailingAnchor.constraint(equalTo: searchBarContainer.trailingAnchor).isActive = true
         searchBar.delegate = self
-        searchBar.showsCancelButton = true
-        searchBar.searchBarStyle = UISearchBar.Style.default
-        searchBar.placeholder = "Поиск группы"
-        searchBar.sizeToFit()
-        tableView.tableHeaderView = searchBar
+        tableView.tableHeaderView = searchBarContainer
+        
     }
 
     // MARK: - Table view data source
@@ -49,6 +52,8 @@ class GroupTableViewController: UITableViewController, UISearchBarDelegate {
         cell.groupNameLabel.text = group.name
         cell.groupDescriptionLabel.text = group.description
         cell.groupImageView.image = group.groupImage
+        
+        cell.didTap = { self.selectRow(tableView, indexPath: indexPath) }
 
         return cell
     }
@@ -58,8 +63,13 @@ class GroupTableViewController: UITableViewController, UISearchBarDelegate {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectRow(tableView, indexPath: indexPath)
+    }
+    
+    func selectRow(_ tableView: UITableView, indexPath: IndexPath) {
         guard let cell = tableView.cellForRow(at: indexPath) as? GroupTableViewCell,
               let group = cell.group
+        
         else {return}
         
         var checkBox = false
@@ -74,12 +84,11 @@ class GroupTableViewController: UITableViewController, UISearchBarDelegate {
         self.navigationController?.popViewController(animated: true)
     }
     
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        self.searchText = searchText
+    func cancelPressed() {
+        searchText = nil
     }
     
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.searchTextField.text = ""
-        searchText = ""
+    func textDidChange(text: String) {
+        searchText = text
     }
 }

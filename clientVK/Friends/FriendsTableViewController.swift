@@ -43,6 +43,8 @@ class FriendsTableViewController: UITableViewController {
         cell.avatar.avatar.image = user.avatar
         cell.ageLabel.text = user.age != nil ? String(user.age!) : nil
         cell.setNeedsLayout()
+        
+        cell.avatar.didTap = { self.performSegue(withIdentifier: self.showUsersPhotosIdentifier, sender: indexPath) }
         return cell
     }
    
