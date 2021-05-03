@@ -22,7 +22,7 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="login" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wJu-FY-lcf">
-                                        <rect key="frame" x="107" y="316" width="200" height="34"/>
+                                        <rect key="frame" x="107" y="366" width="200" height="34"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="200" id="UOd-1G-19U"/>
                                             <constraint firstAttribute="height" constant="34" id="pHZ-Fz-vQ7"/>
@@ -31,7 +31,7 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r09-4T-ihc">
-                                        <rect key="frame" x="160" y="484" width="94" height="54"/>
+                                        <rect key="frame" x="160" y="534" width="94" height="54"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="54" id="bDZ-0h-poV"/>
                                         </constraints>
@@ -69,7 +69,7 @@
                                         </variation>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xKO-Cg-3yi">
-                                        <rect key="frame" x="107" y="400" width="200" height="34"/>
+                                        <rect key="frame" x="107" y="450" width="200" height="34"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="34" id="3oL-c1-gWo"/>
                                             <constraint firstAttribute="width" constant="220" id="V3i-4f-3aA"/>
@@ -83,10 +83,12 @@
                                             </mask>
                                         </variation>
                                     </textField>
-                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dc1-zI-WOw" customClass="IndicatorStackView" customModule="clientVK" customModuleProvider="target">
-                                        <rect key="frame" x="157" y="196" width="100" height="30"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dc1-zI-WOw" customClass="IndicatorView" customModule="clientVK" customModuleProvider="target">
+                                        <rect key="frame" x="147" y="196" width="120" height="80"/>
+                                        <color key="backgroundColor" systemColor="systemOrangeColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="PZ4-rO-AGE"/>
+                                            <constraint firstAttribute="width" constant="120" id="32b-TR-lok"/>
+                                            <constraint firstAttribute="height" constant="80" id="PZ4-rO-AGE"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -525,6 +527,7 @@
                     <navigationItem key="navigationItem" id="KhJ-9t-lCb"/>
                     <connections>
                         <outlet property="tableView" destination="l1J-QI-02l" id="YYB-e9-Wur"/>
+                        <segue destination="06N-sA-MjS" kind="show" identifier="showGalleryPhotoFromNews" id="cKR-cQ-mgJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mlI-tb-mm5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -556,7 +559,7 @@
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7Nz-lE-MZy">
                                             <rect key="frame" x="4" y="4" width="120" height="120"/>
                                         </imageView>
-                                        <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hha-jD-cDh" customClass="LikeCountView" customModule="clientVK" customModuleProvider="target">
+                                        <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hha-jD-cDh" customClass="LikeCountView" customModule="clientVK" customModuleProvider="target">
                                             <rect key="frame" x="65" y="90" width="55" height="30"/>
                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             <constraints>
@@ -595,11 +598,45 @@
                             </button>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="06N-sA-MjS" kind="show" identifier="showGalleryPhoto" id="3Ef-WA-IPU"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jfO-AU-zU8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="GVt-SM-sVU" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3351" y="-871"/>
+        </scene>
+        <!--Gallery View Controller-->
+        <scene sceneID="ncX-9P-hCq">
+            <objects>
+                <viewController id="06N-sA-MjS" customClass="GalleryViewController" customModule="clientVK" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="gsJ-wg-R25">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Icr-DX-ifi">
+                                <rect key="frame" x="0.0" y="96" width="414" height="709"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Spx-EH-7gQ"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Icr-DX-ifi" firstAttribute="top" secondItem="Spx-EH-7gQ" secondAttribute="top" constant="8" id="a7d-ZQ-gn0"/>
+                            <constraint firstItem="Spx-EH-7gQ" firstAttribute="trailing" secondItem="Icr-DX-ifi" secondAttribute="trailing" id="bbI-1f-mIM"/>
+                            <constraint firstItem="Icr-DX-ifi" firstAttribute="leading" secondItem="Spx-EH-7gQ" secondAttribute="leading" id="qDM-VH-92A"/>
+                            <constraint firstItem="Spx-EH-7gQ" firstAttribute="bottom" secondItem="Icr-DX-ifi" secondAttribute="bottom" constant="8" id="z34-cK-YiL"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="pVS-pb-5uK"/>
+                    <connections>
+                        <outlet property="photoGalleryView" destination="Icr-DX-ifi" id="job-96-Wm5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Zxk-1d-7X5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5010" y="-297"/>
         </scene>
         <!--Друзья-->
         <scene sceneID="hJ4-Mm-4MC">
@@ -662,6 +699,9 @@
             <size key="intrinsicContentSize" width="30" height="30"/>
         </designable>
     </designables>
+    <inferredMetricsTieBreakers>
+        <segue reference="cKR-cQ-mgJ"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="arrowshape.turn.up.right.fill" catalog="system" width="128" height="106"/>
         <image name="ellipsis.bubble" catalog="system" width="128" height="110"/>

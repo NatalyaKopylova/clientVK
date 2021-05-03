@@ -9,6 +9,8 @@ import UIKit
 
 class NewsScreenViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    let segueIdentifier = "showGalleryPhotoFromNews"
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         DataStorage.shared.newsScreen.count
     }
@@ -25,5 +27,17 @@ class NewsScreenViewController: UIViewController, UITableViewDelegate, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.reloadData()
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let images = DataStorage.shared.newsScreen[indexPath.row].newsPhotos
+        performSegue(withIdentifier: segueIdentifier, sender: images)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? GalleryViewController,
+           let images = sender as? [UIImage] {
+            destination.setImages(images: images, currentIndex: 0)
+        }
     }
 }

@@ -14,12 +14,13 @@
 		A908287C2631F33B008D0673 /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = A908287B2631F33B008D0673 /* News.swift */; };
 		A90828802632D8D4008D0673 /* MosaicLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A908287F2632D8D4008D0673 /* MosaicLayout.swift */; };
 		A908288326344369008D0673 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A908288226344369008D0673 /* PhotoCollectionViewCell.swift */; };
-		A908288B2636E46B008D0673 /* IndicatorStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A908288A2636E46B008D0673 /* IndicatorStackView.swift */; };
+		A908288B2636E46B008D0673 /* IndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A908288A2636E46B008D0673 /* IndicatorView.swift */; };
 		A908288E26396338008D0673 /* MySearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A908288D26396337008D0673 /* MySearchBarView.swift */; };
 		A908289226396930008D0673 /* MySearchBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A90828912639692F008D0673 /* MySearchBarView.xib */; };
 		A91047D92627188700B216DB /* GroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91047D72627188700B216DB /* GroupTableViewCell.swift */; };
 		A91047DA2627188700B216DB /* GroupTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A91047D82627188700B216DB /* GroupTableViewCell.xib */; };
 		A91047DD26285EB600B216DB /* MyGroupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91047DC26285EB600B216DB /* MyGroupTableViewController.swift */; };
+		A95B34EC263C2764008607EE /* GalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95B34EB263C2764008607EE /* GalleryViewController.swift */; };
 		A97C2179262D882C0011D868 /* LikeCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97C2178262D882C0011D868 /* LikeCountView.swift */; };
 		A97C217E262D89140011D868 /* HeartButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97C217D262D89140011D868 /* HeartButton.swift */; };
 		A9A37AFE262DB4160080E6AE /* AvatarRoundedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9A37AFD262DB4160080E6AE /* AvatarRoundedView.swift */; };
@@ -48,12 +49,13 @@
 		A908287B2631F33B008D0673 /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
 		A908287F2632D8D4008D0673 /* MosaicLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MosaicLayout.swift; sourceTree = "<group>"; };
 		A908288226344369008D0673 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
-		A908288A2636E46B008D0673 /* IndicatorStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorStackView.swift; sourceTree = "<group>"; };
+		A908288A2636E46B008D0673 /* IndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorView.swift; sourceTree = "<group>"; };
 		A908288D26396337008D0673 /* MySearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySearchBarView.swift; sourceTree = "<group>"; };
 		A90828912639692F008D0673 /* MySearchBarView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MySearchBarView.xib; sourceTree = "<group>"; };
 		A91047D72627188700B216DB /* GroupTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupTableViewCell.swift; sourceTree = "<group>"; };
 		A91047D82627188700B216DB /* GroupTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroupTableViewCell.xib; sourceTree = "<group>"; };
 		A91047DC26285EB600B216DB /* MyGroupTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGroupTableViewController.swift; sourceTree = "<group>"; };
+		A95B34EB263C2764008607EE /* GalleryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryViewController.swift; sourceTree = "<group>"; };
 		A97C2178262D882C0011D868 /* LikeCountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeCountView.swift; sourceTree = "<group>"; };
 		A97C217D262D89140011D868 /* HeartButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartButton.swift; sourceTree = "<group>"; };
 		A9A37AFD262DB4160080E6AE /* AvatarRoundedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarRoundedView.swift; sourceTree = "<group>"; };
@@ -115,7 +117,7 @@
 				A97C217C262D88EE0011D868 /* LikeCountView */,
 				A9082869263040C5008D0673 /* FirstLetterSectionHeaderView.swift */,
 				A9082875263186F5008D0673 /* MyButtonNewsScreen.swift */,
-				A908288A2636E46B008D0673 /* IndicatorStackView.swift */,
+				A908288A2636E46B008D0673 /* IndicatorView.swift */,
 			);
 			path = UIComponents;
 			sourceTree = "<group>";
@@ -169,6 +171,7 @@
 				A9DAF6002626D0AB00C7BCB5 /* Friends */,
 				A9DAF6012626D0EE00C7BCB5 /* Groups */,
 				A908286C26317401008D0673 /* NewsScreen */,
+				A95B34EB263C2764008607EE /* GalleryViewController.swift */,
 			);
 			path = clientVK;
 			sourceTree = "<group>";
@@ -291,8 +294,9 @@
 				A9DAF5FE2625C88300C7BCB5 /* UserPhotosCollectionViewCell.swift in Sources */,
 				A908287926318FF0008D0673 /* NewsTableViewCell.swift in Sources */,
 				A9DAF5F82625B87700C7BCB5 /* FriendsTableViewController.swift in Sources */,
-				A908288B2636E46B008D0673 /* IndicatorStackView.swift in Sources */,
+				A908288B2636E46B008D0673 /* IndicatorView.swift in Sources */,
 				A9DAF5F12625A11600C7BCB5 /* DataStorage.swift in Sources */,
+				A95B34EC263C2764008607EE /* GalleryViewController.swift in Sources */,
 				A97C217E262D89140011D868 /* HeartButton.swift in Sources */,
 				A9DAF5EA2625920700C7BCB5 /* User.swift in Sources */,
 				A908286A263040C5008D0673 /* FirstLetterSectionHeaderView.swift in Sources */,

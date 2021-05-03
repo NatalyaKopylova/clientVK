@@ -12,7 +12,7 @@ class EntranceViewController: UIViewController {
     @IBOutlet weak var loginTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
-    @IBOutlet weak var indicatorUIStackView: IndicatorStackView!
+    @IBOutlet weak var indicatorUIStackView: IndicatorView!
     
     let loginTabBarSegue = "loginTabBarSegue"
        
@@ -27,7 +27,7 @@ class EntranceViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        indicatorUIStackView.startAnimation()
+//        IndicatorStackView
     }
     
     func alertWindowError(alertText: String){

@@ -44,7 +44,7 @@ class DataStorage {
     }
     
     func fillUserArray() {
-        let user1photoArray = [UIImage(named: "Ivan"), UIImage(named: "Ivan1")]
+        let user1photoArray = [UIImage(named: "Ivan"), UIImage(named: "Ivan1"), UIImage(named: "Vasya1")]
         let user1 = User(name: "Ваня", age: 12, avatar: UIImage(named: "Ivan"), photoArray: user1photoArray)
         
         let user2photoArray = [UIImage(named: "Vasya"), UIImage(named: "Vasya1")]

@@ -53,4 +53,16 @@ class UserPhotoCollectionViewController: UICollectionViewController, UICollectio
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 100, height: 100)
     }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "showGalleryPhoto", sender: indexPath.row)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let destination = segue.destination as? GalleryViewController,
+              let index = sender as? Int
+        else {return}
+        let images = photos.filter { $0 != nil }.map { $0! }
+        destination.setImages(images: images, currentIndex: index)
+    }
 }
