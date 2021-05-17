@@ -55,14 +55,24 @@ class UserPhotoCollectionViewController: UICollectionViewController, UICollectio
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "showGalleryPhoto", sender: indexPath.row)
+        let cell = collectionView.cellForItem(at: indexPath)!
+        let galleryVC = UIStoryboard(name: "Main", bundle: nil)
+            .instantiateViewController(withIdentifier: "GalleryViewController") as! GalleryViewController
+        
+        galleryVC.modalPresentationStyle = .custom
+        let images = photos.filter { $0 != nil }.map { $0! }
+        let convertedFromFrame = view.convert(cell.frame, from: collectionView)
+        galleryVC.setImages(images: images, currentIndex: indexPath.row, fromFrame: convertedFromFrame)
+        galleryVC.setupTransition()
+        self.present(galleryVC, animated: true, completion: nil)
+//        performSegue(withIdentifier: "showGalleryPhoto", sender: (indexPath.row, cell.frame))
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let destination = segue.destination as? GalleryViewController,
-              let index = sender as? Int
+              let (index, frame) = sender as? (Int, CGRect)
         else {return}
         let images = photos.filter { $0 != nil }.map { $0! }
-        destination.setImages(images: images, currentIndex: index)
+        destination.setImages(images: images, currentIndex: index, fromFrame: frame)
     }
 }

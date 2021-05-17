@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="LMy-yg-VJu">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9tC-uz-9gz">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
@@ -335,7 +335,7 @@
         <!--Группы-->
         <scene sceneID="nLv-bd-3Mp">
             <objects>
-                <navigationController id="odI-2T-UGP" sceneMemberID="viewController">
+                <navigationController id="odI-2T-UGP" customClass="CustomNavigationController" customModule="clientVK" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Группы" image="person.3" catalog="system" id="dDf-1S-q3Q">
                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBarItem>
@@ -524,10 +524,11 @@
                             <constraint firstItem="l1J-QI-02l" firstAttribute="top" secondItem="31p-UR-5xE" secondAttribute="top" id="l91-Ia-B9C"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="KhJ-9t-lCb"/>
+                    <navigationItem key="navigationItem" id="KhJ-9t-lCb">
+                        <barButtonItem key="backBarButtonItem" title=" " id="Nu1-YK-bBU"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="l1J-QI-02l" id="YYB-e9-Wur"/>
-                        <segue destination="06N-sA-MjS" kind="show" identifier="showGalleryPhotoFromNews" id="cKR-cQ-mgJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mlI-tb-mm5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -587,6 +588,7 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" title="Фото" largeTitleDisplayMode="never" id="zFL-aX-aV1">
+                        <barButtonItem key="backBarButtonItem" title=" " id="2hg-H9-XUw"/>
                         <barButtonItem key="rightBarButtonItem" title="Выйти" style="plain" id="LMQ-hK-tU9">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="v4t-P4-E3Q">
                                 <rect key="frame" x="302" y="7" width="92" height="30"/>
@@ -598,9 +600,6 @@
                             </button>
                         </barButtonItem>
                     </navigationItem>
-                    <connections>
-                        <segue destination="06N-sA-MjS" kind="show" identifier="showGalleryPhoto" id="3Ef-WA-IPU"/>
-                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jfO-AU-zU8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="GVt-SM-sVU" userLabel="Exit" sceneMemberID="exit"/>
@@ -610,14 +609,28 @@
         <!--Gallery View Controller-->
         <scene sceneID="ncX-9P-hCq">
             <objects>
-                <viewController id="06N-sA-MjS" customClass="GalleryViewController" customModule="clientVK" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GalleryViewController" modalTransitionStyle="crossDissolve" modalPresentationStyle="overFullScreen" id="06N-sA-MjS" customClass="GalleryViewController" customModule="clientVK" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gsJ-wg-R25">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Icr-DX-ifi">
-                                <rect key="frame" x="0.0" y="96" width="414" height="709"/>
+                                <rect key="frame" x="0.0" y="52" width="414" height="802"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NT2-fy-dSS">
+                                        <rect key="frame" x="8" y="8" width="17.5" height="22"/>
+                                        <color key="tintColor" systemColor="systemOrangeColor"/>
+                                        <state key="normal" image="xmark" catalog="system"/>
+                                        <connections>
+                                            <action selector="closeDidTap" destination="06N-sA-MjS" eventType="touchUpInside" id="kgm-Cj-kAH"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="NT2-fy-dSS" firstAttribute="top" secondItem="Icr-DX-ifi" secondAttribute="top" constant="8" id="HBb-X8-bVZ"/>
+                                    <constraint firstItem="NT2-fy-dSS" firstAttribute="leading" secondItem="Icr-DX-ifi" secondAttribute="leading" constant="8" id="hcU-b2-Ec0"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Spx-EH-7gQ"/>
@@ -636,12 +649,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zxk-1d-7X5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5010" y="-297"/>
+            <point key="canvasLocation" x="5008.695652173913" y="-297.32142857142856"/>
         </scene>
         <!--Друзья-->
         <scene sceneID="hJ4-Mm-4MC">
             <objects>
-                <navigationController id="Q9B-IV-WFO" sceneMemberID="viewController">
+                <navigationController id="Q9B-IV-WFO" customClass="CustomNavigationController" customModule="clientVK" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Друзья" image="person" catalog="system" id="jh0-e2-bTb">
                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBarItem>
@@ -671,7 +684,7 @@
         <!--Новости-->
         <scene sceneID="aRF-lg-4Is">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mwk-1N-xth" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mwk-1N-xth" customClass="CustomNavigationController" customModule="clientVK" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Новости" image="heart.text.square" catalog="system" id="VHC-rS-gal"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="5kd-VD-JWJ">
@@ -699,9 +712,6 @@
             <size key="intrinsicContentSize" width="30" height="30"/>
         </designable>
     </designables>
-    <inferredMetricsTieBreakers>
-        <segue reference="cKR-cQ-mgJ"/>
-    </inferredMetricsTieBreakers>
     <resources>
         <image name="arrowshape.turn.up.right.fill" catalog="system" width="128" height="106"/>
         <image name="ellipsis.bubble" catalog="system" width="128" height="110"/>
@@ -710,6 +720,7 @@
         <image name="heart.text.square" catalog="system" width="128" height="114"/>
         <image name="person" catalog="system" width="128" height="117"/>
         <image name="person.3" catalog="system" width="128" height="62"/>
+        <image name="xmark" catalog="system" width="128" height="113"/>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

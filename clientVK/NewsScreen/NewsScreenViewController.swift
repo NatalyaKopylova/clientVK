@@ -7,9 +7,7 @@
 
 import UIKit
 
-class NewsScreenViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    
-    let segueIdentifier = "showGalleryPhotoFromNews"
+class NewsScreenViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NewsTableViewCellDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         DataStorage.shared.newsScreen.count
@@ -19,6 +17,7 @@ class NewsScreenViewController: UIViewController, UITableViewDelegate, UITableVi
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: NewsTableViewCell.self)) as! NewsTableViewCell
         let news = DataStorage.shared.newsScreen[indexPath.row]
         cell.configWith(news: news)
+        cell.delegate = self
         return cell
     }
     
@@ -31,13 +30,29 @@ class NewsScreenViewController: UIViewController, UITableViewDelegate, UITableVi
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let images = DataStorage.shared.newsScreen[indexPath.row].newsPhotos
-        performSegue(withIdentifier: segueIdentifier, sender: images)
+        let galleryVC = UIStoryboard(name: "Main", bundle: nil)
+            .instantiateViewController(withIdentifier: "GalleryViewController") as! GalleryViewController
+        
+        galleryVC.modalPresentationStyle = .custom
+        let cell = tableView.cellForRow(at: indexPath) as! NewsTableViewCell
+        let firstCollectionViewCell = cell.fhotoCollectionView.cellForItem(at: IndexPath(row: 0, section: 0))!
+        let convertedFromFrame = view.convert(firstCollectionViewCell.frame, from: cell.fhotoCollectionView)
+        galleryVC.setImages(images: images, currentIndex: 0, fromFrame: convertedFromFrame)
+        galleryVC.setupTransition()
+        self.present(galleryVC, animated: true, completion: nil)
+        cell.setSelected(false, animated: false)
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let destination = segue.destination as? GalleryViewController,
-           let images = sender as? [UIImage] {
-            destination.setImages(images: images, currentIndex: 0)
-        }
+    func didSelectCell(images: [UIImage], currentIndex: Int, collectionView: UICollectionView) {
+        let galleryVC = UIStoryboard(name: "Main", bundle: nil)
+            .instantiateViewController(withIdentifier: "GalleryViewController") as! GalleryViewController
+        
+        galleryVC.modalPresentationStyle = .custom
+        let cell = collectionView.cellForItem(at: IndexPath(row: currentIndex, section: 0))!
+        let convertedFromFrame = view.convert(cell.frame, from: collectionView)
+        galleryVC.setImages(images: images, currentIndex: currentIndex, fromFrame: convertedFromFrame)
+        galleryVC.setupTransition()
+        self.present(galleryVC, animated: true, completion: nil)
     }
+    
 }

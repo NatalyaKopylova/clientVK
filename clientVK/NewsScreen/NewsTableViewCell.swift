@@ -7,7 +7,11 @@
 
 import UIKit
 
-class NewsTableViewCell: UITableViewCell, UICollectionViewDataSource {
+protocol NewsTableViewCellDelegate: class {
+    func didSelectCell(images: [UIImage], currentIndex: Int, collectionView: UICollectionView)
+}
+
+class NewsTableViewCell: UITableViewCell, UICollectionViewDataSource, UICollectionViewDelegate {
     
     @IBOutlet weak var titleLabel: UILabel!
     
@@ -23,6 +27,8 @@ class NewsTableViewCell: UITableViewCell, UICollectionViewDataSource {
     
     private var photos = [UIImage]()
     
+    weak var delegate: NewsTableViewCellDelegate?
+    
     func configWith(news: News) {
         titleLabel.text = news.title
         likeButton.text = String(news.like)
@@ -32,6 +38,7 @@ class NewsTableViewCell: UITableViewCell, UICollectionViewDataSource {
         self.photos = news.newsPhotos
         
         fhotoCollectionView.dataSource = self
+        fhotoCollectionView.delegate = self
         fhotoCollectionView.reloadData()
     }
     
@@ -49,5 +56,12 @@ class NewsTableViewCell: UITableViewCell, UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: PhotoCollectionViewCell.self), for: indexPath) as! PhotoCollectionViewCell
         cell.imageView.image = photos[indexPath.row]
         return cell
-    }    
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        delegate?.didSelectCell(images: photos, currentIndex: indexPath.row, collectionView: fhotoCollectionView)
+    }
+    
+    
+    
 }
