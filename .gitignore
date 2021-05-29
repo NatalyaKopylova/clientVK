@@ -81,3 +81,4 @@ fastlane/report.xml
 fastlane/Preview.html
 fastlane/screenshots/**/*.png
 fastlane/test_output
+clientVK.xcodeproj/xcuserdata/civillale.xcuserdatad/xcschemes/xcschememanagement.plist

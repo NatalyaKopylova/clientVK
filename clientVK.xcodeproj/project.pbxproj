@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		68BC4EF03CC362E3AC2DEE02 /* Pods_clientVK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A50DB89875A60AB94643757 /* Pods_clientVK.framework */; };
 		A908286A263040C5008D0673 /* FirstLetterSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9082869263040C5008D0673 /* FirstLetterSectionHeaderView.swift */; };
 		A908286E2631745D008D0673 /* NewsScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A908286D2631745D008D0673 /* NewsScreenViewController.swift */; };
 		A9082876263186F5008D0673 /* MyButtonNewsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9082875263186F5008D0673 /* MyButtonNewsScreen.swift */; };
@@ -31,6 +32,8 @@
 		A97C217E262D89140011D868 /* HeartButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97C217D262D89140011D868 /* HeartButton.swift */; };
 		A999175B264EAB9400B368A8 /* GalleryDissmisTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = A999175A264EAB9400B368A8 /* GalleryDissmisTransition.swift */; };
 		A999175F265BCBB300B368A8 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = A999175E265BCBB200B368A8 /* Session.swift */; };
+		A999176B26611E3600B368A8 /* AuthorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A999176A26611E3600B368A8 /* AuthorizationViewController.swift */; };
+		A999176F26612A4E00B368A8 /* VKAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A999176E26612A4E00B368A8 /* VKAPI.swift */; };
 		A9A37AFE262DB4160080E6AE /* AvatarRoundedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9A37AFD262DB4160080E6AE /* AvatarRoundedView.swift */; };
 		A9DAF5C3261B0B4600C7BCB5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9DAF5C2261B0B4600C7BCB5 /* AppDelegate.swift */; };
 		A9DAF5C5261B0B4600C7BCB5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9DAF5C4261B0B4600C7BCB5 /* SceneDelegate.swift */; };
@@ -50,6 +53,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		019FDC7A43C910793BE669ED /* Pods-clientVK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-clientVK.release.xcconfig"; path = "Target Support Files/Pods-clientVK/Pods-clientVK.release.xcconfig"; sourceTree = "<group>"; };
+		5B45BCC990BE2E6ACCD501BC /* Pods-clientVK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-clientVK.debug.xcconfig"; path = "Target Support Files/Pods-clientVK/Pods-clientVK.debug.xcconfig"; sourceTree = "<group>"; };
+		8A50DB89875A60AB94643757 /* Pods_clientVK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_clientVK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9082869263040C5008D0673 /* FirstLetterSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstLetterSectionHeaderView.swift; sourceTree = "<group>"; };
 		A908286D2631745D008D0673 /* NewsScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsScreenViewController.swift; sourceTree = "<group>"; };
 		A9082875263186F5008D0673 /* MyButtonNewsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyButtonNewsScreen.swift; sourceTree = "<group>"; };
@@ -74,6 +80,8 @@
 		A97C217D262D89140011D868 /* HeartButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartButton.swift; sourceTree = "<group>"; };
 		A999175A264EAB9400B368A8 /* GalleryDissmisTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryDissmisTransition.swift; sourceTree = "<group>"; };
 		A999175E265BCBB200B368A8 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
+		A999176A26611E3600B368A8 /* AuthorizationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationViewController.swift; sourceTree = "<group>"; };
+		A999176E26612A4E00B368A8 /* VKAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKAPI.swift; sourceTree = "<group>"; };
 		A9A37AFD262DB4160080E6AE /* AvatarRoundedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarRoundedView.swift; sourceTree = "<group>"; };
 		A9DAF5BF261B0B4600C7BCB5 /* clientVK.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = clientVK.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9DAF5C2261B0B4600C7BCB5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -99,12 +107,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				68BC4EF03CC362E3AC2DEE02 /* Pods_clientVK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		52F951D6D839E703C4C87367 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5B45BCC990BE2E6ACCD501BC /* Pods-clientVK.debug.xcconfig */,
+				019FDC7A43C910793BE669ED /* Pods-clientVK.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		7AF98DE5169E172964516750 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8A50DB89875A60AB94643757 /* Pods_clientVK.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		A908286C26317401008D0673 /* NewsScreen */ = {
 			isa = PBXGroup;
 			children = (
@@ -174,6 +200,7 @@
 			isa = PBXGroup;
 			children = (
 				A999175E265BCBB200B368A8 /* Session.swift */,
+				A999176E26612A4E00B368A8 /* VKAPI.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -191,6 +218,8 @@
 			children = (
 				A9DAF5C1261B0B4600C7BCB5 /* clientVK */,
 				A9DAF5C0261B0B4600C7BCB5 /* Products */,
+				52F951D6D839E703C4C87367 /* Pods */,
+				7AF98DE5169E172964516750 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -220,6 +249,7 @@
 				A9DAF6002626D0AB00C7BCB5 /* Friends */,
 				A9DAF6012626D0EE00C7BCB5 /* Groups */,
 				A908286C26317401008D0673 /* NewsScreen */,
+				A999176A26611E3600B368A8 /* AuthorizationViewController.swift */,
 			);
 			path = clientVK;
 			sourceTree = "<group>";
@@ -264,9 +294,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A9DAF5D3261B0B4800C7BCB5 /* Build configuration list for PBXNativeTarget "clientVK" */;
 			buildPhases = (
+				C1B8F496BBB9576862385078 /* [CP] Check Pods Manifest.lock */,
 				A9DAF5BB261B0B4600C7BCB5 /* Sources */,
 				A9DAF5BC261B0B4600C7BCB5 /* Frameworks */,
 				A9DAF5BD261B0B4600C7BCB5 /* Resources */,
+				344D6A3B3F93361BF0FE57A2 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -324,13 +356,57 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		344D6A3B3F93361BF0FE57A2 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-clientVK/Pods-clientVK-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-clientVK/Pods-clientVK-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-clientVK/Pods-clientVK-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C1B8F496BBB9576862385078 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-clientVK-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		A9DAF5BB261B0B4600C7BCB5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A999176B26611E3600B368A8 /* AuthorizationViewController.swift in Sources */,
 				A999175F265BCBB300B368A8 /* Session.swift in Sources */,
 				A91047DD26285EB600B216DB /* MyGroupTableViewController.swift in Sources */,
+				A999176F26612A4E00B368A8 /* VKAPI.swift in Sources */,
 				A9DAF5EE2625989500C7BCB5 /* Group.swift in Sources */,
 				A9DAF5F42625B6B100C7BCB5 /* UserTableViewCell.swift in Sources */,
 				A95B3504264D563D008607EE /* RotateInteractiveTransition.swift in Sources */,
@@ -507,6 +583,7 @@
 		};
 		A9DAF5D4261B0B4800C7BCB5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5B45BCC990BE2E6ACCD501BC /* Pods-clientVK.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -526,6 +603,7 @@
 		};
 		A9DAF5D5261B0B4800C7BCB5 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 019FDC7A43C910793BE669ED /* Pods-clientVK.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
