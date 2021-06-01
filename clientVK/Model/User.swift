@@ -9,8 +9,14 @@ import Foundation
 import UIKit
 
 struct User {
-    var name: String
+    let id: Int
+    let name: String
     var age: UInt?
-    var avatar: UIImage?
-    var photoArray = [UIImage?]()
+    var avatar: String? 
+    
+    init(json: [String: Any]) {
+        self.id = json["id"] as! Int
+        self.name = (json["first_name"] as! String) + " " + (json["last_name"] as! String)
+        self.avatar = json["photo_100"] as? String
+    }
 }
