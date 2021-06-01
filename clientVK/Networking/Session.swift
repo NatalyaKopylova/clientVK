@@ -11,7 +11,7 @@ class Session {
     
     var token: String?
     var userId: Int?
-    
+
     static let shared = Session()
 
     private init() {}    
