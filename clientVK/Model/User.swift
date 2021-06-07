@@ -7,14 +7,18 @@
 
 import Foundation
 import UIKit
+import RealmSwift
 
-struct User {
-    let id: Int
-    let name: String
-    var age: UInt?
-    var avatar: String? 
+
+class User: Object  {
+    @objc dynamic var id: Int = 0
+    @objc dynamic var name: String = ""
+//    @objc dynamic var age: Int?
+    @objc dynamic var avatar: String?
+
     
-    init(json: [String: Any]) {
+    convenience init(json: [String: Any]) {
+        self.init()
         self.id = json["id"] as! Int
         self.name = (json["first_name"] as! String) + " " + (json["last_name"] as! String)
         self.avatar = json["photo_100"] as? String

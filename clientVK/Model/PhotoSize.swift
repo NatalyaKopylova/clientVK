@@ -6,14 +6,16 @@
 //
 
 import Foundation
+import RealmSwift
 
-struct PhotoSize {
-    let height: Int
-    let url: String
-    let type: String
-    let width: Int
+class PhotoSize: Object {
+    @objc dynamic var height: Int = 0
+    @objc dynamic var url: String = ""
+    @objc dynamic var type: String = ""
+    @objc dynamic var width: Int = 0
     
-    init (json: [String: Any]) {
+    convenience init (json: [String: Any]) {
+        self.init()
         self.height = json["height"] as! Int
         self.url = json["url"] as! String
         self.type = json["type"] as! String

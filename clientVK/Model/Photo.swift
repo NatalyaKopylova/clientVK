@@ -6,15 +6,18 @@
 //
 
 import Foundation
+import RealmSwift
 
-struct Photo {
+class Photo: Object {
      
-    let id: Int
-    let sizes: [PhotoSize]
+    @objc dynamic var id: Int = 0
+    var sizes: List<PhotoSize> = List<PhotoSize>()
     
-    init(json: [String: Any]) {
+    convenience init(json: [String: Any]) {
+        self.init()
         self.id = json["id"] as! Int
-        self.sizes = (json["sizes"] as! [[String: Any]]).map({ PhotoSize(json: $0)})
+        let sizesArray = (json["sizes"] as! [[String: Any]]).map({ PhotoSize(json: $0)})
+        self.sizes.append(objectsIn: sizesArray)
     }
 }
 
