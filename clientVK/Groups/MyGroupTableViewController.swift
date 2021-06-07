@@ -8,33 +8,42 @@
 import UIKit
 
 class MyGroupTableViewController: UITableViewController {
-
+    
+    var myGroups = [Group]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        Session.shared.getGroups { (myGroups) in
+            self.myGroups = myGroups.sorted(by: { $0.name < $1.name })
+            self.tableView.reloadData()
+        }
         
         let nib = UINib(nibName: String(describing: GroupTableViewCell.self), bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: String(describing: GroupTableViewCell.self))
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        tableView.reloadData()
+       
     }
 
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return DataStorage.shared.myGroups.count
+        return myGroups.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: GroupTableViewCell.self), for: indexPath) as! GroupTableViewCell
-        let group = DataStorage.shared.myGroups[indexPath.row]
+        let group = myGroups[indexPath.row]
         
         cell.groupNameLabel.text = group.name
         cell.groupDescriptionLabel.text = group.description
-        cell.groupImageView.image = group.groupImage
+        if let myGroupsUrl = group.groupImage, let url = URL(string: myGroupsUrl) {
+            cell.groupImageView.af.setImage(withURL: url)
+        }
 
         return cell
     }

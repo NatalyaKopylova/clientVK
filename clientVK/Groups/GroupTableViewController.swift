@@ -8,6 +8,7 @@
 import UIKit
 
 class GroupTableViewController: UITableViewController, MySearchBarViewDelegate {
+    
 
     var searchText: String? {
         didSet {
@@ -16,7 +17,7 @@ class GroupTableViewController: UITableViewController, MySearchBarViewDelegate {
     }
     
     var groups: [Group] {
-        return DataStorage.shared.filteredGroups(text: searchText)
+        return [Group]()
     }
     
     override func viewDidLoad() {
@@ -51,7 +52,7 @@ class GroupTableViewController: UITableViewController, MySearchBarViewDelegate {
         cell.group = group
         cell.groupNameLabel.text = group.name
         cell.groupDescriptionLabel.text = group.description
-        cell.groupImageView.image = group.groupImage
+//        cell.groupImageView.image = group.groupImage
         
         cell.didTap = { self.selectRow(tableView, indexPath: indexPath) }
 

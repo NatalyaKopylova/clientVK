@@ -160,6 +160,7 @@
                     </view>
                     <connections>
                         <outlet property="webView" destination="Qfi-aw-jX5" id="a9A-oW-Wmo"/>
+                        <segue destination="9tC-uz-9gz" kind="presentation" identifier="showMain" modalPresentationStyle="fullScreen" id="dJx-vg-Ce6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4op-aQ-DnN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -594,7 +595,7 @@
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7Nz-lE-MZy">
                                             <rect key="frame" x="4" y="4" width="120" height="120"/>
                                         </imageView>
-                                        <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hha-jD-cDh" customClass="LikeCountView" customModule="clientVK" customModuleProvider="target">
+                                        <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hha-jD-cDh" customClass="LikeCountView" customModule="clientVK" customModuleProvider="target">
                                             <rect key="frame" x="65" y="90" width="55" height="30"/>
                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             <constraints>
@@ -746,6 +747,9 @@
             <size key="intrinsicContentSize" width="46" height="30"/>
         </designable>
     </designables>
+    <inferredMetricsTieBreakers>
+        <segue reference="dJx-vg-Ce6"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="arrowshape.turn.up.right.fill" catalog="system" width="128" height="106"/>
         <image name="ellipsis.bubble" catalog="system" width="128" height="110"/>

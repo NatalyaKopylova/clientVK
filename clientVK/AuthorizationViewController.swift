@@ -65,26 +65,22 @@ extension AuthorizationViewController: WKNavigationDelegate {
         if let token = token {
             Session.shared.token = token
         }
-        
-        AF.request(VKAPI.getFriends(fields: "nickname,sex")).response { (response) in
-            let responseData = try! JSONSerialization.jsonObject(with: response.data!)
-            print("my response", responseData)
-        }.resume()
-        
-        AF.request(VKAPI.getPhotos).response { (response) in
-            let responseData = try! JSONSerialization.jsonObject(with: response.data!)
-            print("my response1", responseData)
-        }.resume()
-        
-        AF.request(VKAPI.getGroups).response { (response) in
-            let responseData = try! JSONSerialization.jsonObject(with: response.data!)
-            print("my response2", responseData)
-        }.resume()
-        
-        AF.request(VKAPI.searchGroups).response { (response) in
-            let responseData = try! JSONSerialization.jsonObject(with: response.data!)
-            print("my response3", responseData)
-        }.resume()
+    
+        performSegue(withIdentifier: "showMain", sender: nil)
+//        AF.request(VKAPI.getPhotos).response { (response) in
+//            let responseData = try! JSONSerialization.jsonObject(with: response.data!)
+//            print("my response1", responseData)
+//        }.resume()
+//
+//        AF.request(VKAPI.getGroups).response { (response) in
+//            let responseData = try! JSONSerialization.jsonObject(with: response.data!)
+//            print("my response2", responseData)
+//        }.resume()
+//
+//        AF.request(VKAPI.searchGroups).response { (response) in
+//            let responseData = try! JSONSerialization.jsonObject(with: response.data!)
+//            print("my response3", responseData)
+//        }.resume()
         decisionHandler(.cancel)
     }
 }

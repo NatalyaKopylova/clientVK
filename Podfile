@@ -5,7 +5,7 @@ target 'clientVK' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
   pod 'Alamofire', '~> 5.0'
-
+  pod 'AlamofireImage', '~> 4.1'
   # Pods for clientVK
 
 end

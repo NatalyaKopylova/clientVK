@@ -9,7 +9,15 @@ import Foundation
 import UIKit
 
 struct Group {
-    var name: String
+    let id: Int
+    let name: String
     var description: String?
-    var groupImage: UIImage?
+    var groupImage: String?
+    
+    init(json: [String: Any]) {
+        self.id = json["id"] as! Int
+        self.name = json["name"] as! String
+        self.description = json["description"] as? String
+        self.groupImage = json["photo_100"] as? String
+    }
 }

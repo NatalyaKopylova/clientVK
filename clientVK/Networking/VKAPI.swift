@@ -11,8 +11,8 @@ import Alamofire
 enum VKAPI: URLRequestConvertible {
     
     case getFriends(fields: String)
-    case getPhotos
-    case getGroups
+    case getPhotos(ownerId: Int)
+    case getGroups(fields: String)
     case searchGroups
     
     
@@ -36,7 +36,7 @@ enum VKAPI: URLRequestConvertible {
         case .getFriends:
             return "friends.get"
         case .getPhotos:
-            return "photos.get"
+            return "photos.getAll"
         case .getGroups:
             return "groups.get"
         case .searchGroups:
@@ -54,10 +54,11 @@ enum VKAPI: URLRequestConvertible {
         switch self {
         case .getFriends(let fields):
             params["fields"] = fields
-        case .getPhotos:
-            break
-        case .getGroups:
-            break
+        case .getPhotos(let ownerId):
+            params["owner_id"] = ownerId
+        case .getGroups(let fields):
+            params["fields"] = fields
+            params["extended"] = 1
         case .searchGroups:
             break
         }
@@ -67,9 +68,6 @@ enum VKAPI: URLRequestConvertible {
         
         request = try! URLEncoding.default.encode(request, with: params)
         return request
-    }
-    
-    
-    
+    }   
 }
 

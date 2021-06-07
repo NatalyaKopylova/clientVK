@@ -6,16 +6,22 @@
 //
 
 import UIKit
+import Alamofire
 
 private let reuseIdentifier = "Cell"
 
 class UserPhotoCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
-    var photos = [UIImage?]()
+    var photos = [Photo]()
+    var userId: Int!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionView.reloadData()
+        
+        Session.shared.getPhotos(ownerId: userId) { photos in
+            self.photos = photos
+            self.collectionView.reloadData()
+        }
     }
 
     /*
@@ -42,7 +48,10 @@ class UserPhotoCollectionViewController: UICollectionViewController, UICollectio
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: UserPhotosCollectionViewCell.self), for: indexPath) as! UserPhotosCollectionViewCell
-        cell.imageView.image = photos[indexPath.row]
+        let photo = photos[indexPath.row]
+        if let size = photo.sizes.first(where: { $0.type == "m"}), let url = URL(string: size.url) {
+            cell.imageView.af.setImage(withURL: url)
+        }
         cell.startAnimate()
         // Configure the cell
     
@@ -51,28 +60,28 @@ class UserPhotoCollectionViewController: UICollectionViewController, UICollectio
 
     // MARK: UICollectionViewDelegateFlowLayout
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 100, height: 100)
+        return CGSize(width: 200, height: 200)
     }
     
-    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let cell = collectionView.cellForItem(at: indexPath)!
-        let galleryVC = UIStoryboard(name: "Main", bundle: nil)
-            .instantiateViewController(withIdentifier: "GalleryViewController") as! GalleryViewController
+//    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+////        let cell = collectionView.cellForItem(at: indexPath)!
+////        let galleryVC = UIStoryboard(name: "Main", bundle: nil)
+//            .instantiateViewController(withIdentifier: "GalleryViewController") as! GalleryViewController
         
-        galleryVC.modalPresentationStyle = .custom
-        let images = photos.filter { $0 != nil }.map { $0! }
-        let convertedFromFrame = view.convert(cell.frame, from: collectionView)
-        galleryVC.setImages(images: images, currentIndex: indexPath.row, fromFrame: convertedFromFrame)
-        galleryVC.setupTransition()
-        self.present(galleryVC, animated: true, completion: nil)
+//        galleryVC.modalPresentationStyle = .custom
+//        let images = photos.filter { $0 != nil }.map { $0! }
+//        let convertedFromFrame = view.convert(cell.frame, from: collectionView)
+//        galleryVC.setImages(images: images, currentIndex: indexPath.row, fromFrame: convertedFromFrame)
+//        galleryVC.setupTransition()
+//        self.present(galleryVC, animated: true, completion: nil)
 //        performSegue(withIdentifier: "showGalleryPhoto", sender: (indexPath.row, cell.frame))
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let destination = segue.destination as? GalleryViewController,
-              let (index, frame) = sender as? (Int, CGRect)
-        else {return}
-        let images = photos.filter { $0 != nil }.map { $0! }
-        destination.setImages(images: images, currentIndex: index, fromFrame: frame)
-    }
+//    }
+//
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        guard let destination = segue.destination as? GalleryViewController,
+//              let (index, frame) = sender as? (Int, CGRect)
+//        else {return}
+//        let images = photos.filter { $0 != nil }.map { $0! }
+//        destination.setImages(images: images, currentIndex: index, fromFrame: frame)
+//    }
 }
