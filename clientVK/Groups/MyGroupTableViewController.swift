@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class MyGroupTableViewController: UITableViewController {
     
@@ -13,19 +14,23 @@ class MyGroupTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        Session.shared.getGroups { (myGroups) in
-            self.myGroups = myGroups.sorted(by: { $0.name < $1.name })
-            self.tableView.reloadData()
+        tableView.rowHeight = UITableView.automaticDimension
+        Session.shared.getGroups { () in
+            do {
+                let realm = try Realm()
+                self.myGroups = realm.objects(Group.self).sorted(by: { $0.name < $1.name })
+                self.tableView.reloadData()
+            } catch {
+                print(error)
+            }
         }
         
         let nib = UINib(nibName: String(describing: GroupTableViewCell.self), bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: String(describing: GroupTableViewCell.self))
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-       
     }
 
     // MARK: - Table view data source
@@ -40,7 +45,7 @@ class MyGroupTableViewController: UITableViewController {
         let group = myGroups[indexPath.row]
         
         cell.groupNameLabel.text = group.name
-        cell.groupDescriptionLabel.text = group.description
+        cell.groupDescriptionLabel.text = group.groupDescription
         if let myGroupsUrl = group.groupImage, let url = URL(string: myGroupsUrl) {
             cell.groupImageView.af.setImage(withURL: url)
         }
@@ -48,9 +53,9 @@ class MyGroupTableViewController: UITableViewController {
         return cell
     }
    
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 120
-    }
+//    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return 120
+//    }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         DataStorage.shared.myGroups.remove(at: indexPath.row)

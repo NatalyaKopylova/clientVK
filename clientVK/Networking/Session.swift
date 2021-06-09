@@ -7,6 +7,7 @@
 
 import Foundation
 import Alamofire
+import RealmSwift
 
 class Session {
     
@@ -17,42 +18,45 @@ class Session {
 
     private init() {}
     
-    func getFriends(completion: @escaping ([User]) -> Void) {
+    func getFriends(completion: @escaping () -> Void) {
         AF.request(VKAPI.getFriends(fields: "nickname,sex,photo_100")).response { (response) in
             guard let items = self.handleResponse(response) else {
-                completion([User]())
+                completion()
                 return
             }
             let users = items.map { (item) -> User in
                 return User(json: item)
             }
-            completion(users)
+            self.saveDataToRealm(objects: users)
+            completion()
         }.resume()
     }
     
-    func getGroups(completion: @escaping ([Group]) -> Void) {
+    func getGroups(completion: @escaping () -> Void) {
         AF.request(VKAPI.getGroups(fields: "description")).response { (response) in
             guard let items = self.handleResponse(response) else {
-                completion([Group]())
+                completion()
                 return
             }
             let groups = items.map { (item) -> Group in
                 return Group(json: item)
             }
-            completion(groups)
+            self.saveDataToRealm(objects: groups)
+            completion()
         }.resume()
     }
     
-    func getPhotos(ownerId: Int, completion: @escaping ([Photo]) -> Void) {
+    func getPhotos(ownerId: Int, completion: @escaping () -> Void) {
         AF.request(VKAPI.getPhotos(ownerId: ownerId)).response { (response) in
             guard let items = self.handleResponse(response) else {
-                completion([Photo]())
+                completion()
                 return
             }
             let photos = items.map { (item) -> Photo in
                 return Photo(json: item)
             }
-            completion(photos)
+            self.saveDataToRealm(objects: photos)
+            completion()
         }.resume()
     }
     
@@ -62,5 +66,22 @@ class Session {
             return nil
         }
         return res["items"] as? [[String: Any]]
+    }
+    
+    func saveDataToRealm<T: Object & HasIdProtocol>(objects: [T]) {
+        do {
+//            let config = Realm.Configuration(deleteRealmIfMigrationNeeded: true)
+            let realm = try Realm()
+            objects.forEach { object in
+                if realm.objects(T.self).filter("id == %@", object.id).count == 0 {
+                    try? realm.write {
+                        realm.add(object)
+                    }
+                }
+            }
+//            try realm.commitWrite()
+        } catch  {
+           print (error)
+        }
     }
 }

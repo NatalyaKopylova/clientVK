@@ -7,6 +7,7 @@
 
 import UIKit
 import Alamofire
+import RealmSwift
 
 private let reuseIdentifier = "Cell"
 
@@ -18,9 +19,14 @@ class UserPhotoCollectionViewController: UICollectionViewController, UICollectio
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        Session.shared.getPhotos(ownerId: userId) { photos in
-            self.photos = photos
-            self.collectionView.reloadData()
+        Session.shared.getPhotos(ownerId: userId) { () in
+            do {
+                let realm = try Realm()
+                self.photos = realm.objects(Photo.self).map {$0}
+                self.collectionView.reloadData()
+            } catch {
+                print(error)
+            }
         }
     }
 

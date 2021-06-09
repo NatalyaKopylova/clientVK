@@ -51,7 +51,7 @@ class GroupTableViewController: UITableViewController, MySearchBarViewDelegate {
         
         cell.group = group
         cell.groupNameLabel.text = group.name
-        cell.groupDescriptionLabel.text = group.description
+        cell.groupDescriptionLabel.text = group.groupDescription
 //        cell.groupImageView.image = group.groupImage
         
         cell.didTap = { self.selectRow(tableView, indexPath: indexPath) }
