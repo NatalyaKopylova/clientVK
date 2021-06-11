@@ -7,6 +7,7 @@
 
 import UIKit
 import AlamofireImage
+import RealmSwift
 
 class FriendsTableViewController: UITableViewController {
     
@@ -16,9 +17,14 @@ class FriendsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.backgroundColor = .systemOrange
-        Session.shared.getFriends { (users) in
-            self.users = users.sorted(by: { $0.name < $1.name })
-            self.tableView.reloadData()
+        Session.shared.getFriends { () in
+            do {
+                let realm = try Realm()
+                self.users = realm.objects(User.self).sorted(by: { $0.name < $1.name })
+                self.tableView.reloadData()
+            } catch {
+                print(error)
+            }
         }
     }
 
@@ -48,7 +54,7 @@ class FriendsTableViewController: UITableViewController {
         if let avatarUrl = user.avatar, let url = URL(string: avatarUrl) {
             cell.avatar.avatar.af.setImage(withURL: url)
         }
-        cell.ageLabel.text = user.age != nil ? String(user.age!) : nil
+//        cell.ageLabel.text = user.age != nil ? String(user.age!) : nil
         cell.setNeedsLayout()
         
 //        cell.avatar.didTap = { self.performSegue(withIdentifier: self.showUsersPhotosIdentifier, sender: indexPath) }

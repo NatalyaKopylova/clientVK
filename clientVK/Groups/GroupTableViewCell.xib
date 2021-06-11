@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -17,14 +17,14 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="98"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GroupName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FFQ-4G-ztC">
-                        <rect key="frame" x="16" y="38.5" width="92" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GroupName" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FFQ-4G-ztC">
+                        <rect key="frame" x="16" y="16" width="198" height="20.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GroupDescription" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xht-uM-IrS">
-                        <rect key="frame" x="16" y="67.5" width="114" height="17"/>
+                        <rect key="frame" x="16" y="44.5" width="114" height="17"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" systemColor="secondaryLabelColor"/>
                         <nil key="highlightedColor"/>
@@ -37,13 +37,15 @@
                     </imageView>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="vBA-QG-tiE" secondAttribute="bottom" constant="8" id="049-3T-vpG"/>
-                    <constraint firstItem="FFQ-4G-ztC" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="1M1-GO-wep"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="vBA-QG-tiE" secondAttribute="bottom" constant="8" id="049-3T-vpG"/>
+                    <constraint firstItem="FFQ-4G-ztC" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="8TS-e0-z9x"/>
                     <constraint firstItem="vBA-QG-tiE" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="xht-uM-IrS" secondAttribute="trailing" constant="8" id="HVA-Jv-9Vu"/>
                     <constraint firstItem="xht-uM-IrS" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="IsN-N1-1mg"/>
                     <constraint firstItem="vBA-QG-tiE" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="T5A-pU-rzK"/>
                     <constraint firstItem="xht-uM-IrS" firstAttribute="top" secondItem="FFQ-4G-ztC" secondAttribute="bottom" constant="8" id="arh-yr-in3"/>
                     <constraint firstItem="FFQ-4G-ztC" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="fqk-x4-USl"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="xht-uM-IrS" secondAttribute="bottom" constant="8" id="qVX-bY-qBU"/>
+                    <constraint firstItem="vBA-QG-tiE" firstAttribute="leading" secondItem="FFQ-4G-ztC" secondAttribute="trailing" constant="8" id="x6d-yj-V5g"/>
                     <constraint firstAttribute="trailing" secondItem="vBA-QG-tiE" secondAttribute="trailing" constant="16" id="zTS-81-gpX"/>
                 </constraints>
             </tableViewCellContentView>
