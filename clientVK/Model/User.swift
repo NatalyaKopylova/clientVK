@@ -10,7 +10,7 @@ import UIKit
 import RealmSwift
 
 
-class User: Object  {
+class User: Object, HasIdProtocol  {
     @objc dynamic var id: Int = 0
     @objc dynamic var name: String = ""
 //    @objc dynamic var age: Int?

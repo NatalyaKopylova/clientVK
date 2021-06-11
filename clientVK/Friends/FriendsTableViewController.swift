@@ -7,6 +7,7 @@
 
 import UIKit
 import AlamofireImage
+import RealmSwift
 
 class FriendsTableViewController: UITableViewController {
     
@@ -16,9 +17,14 @@ class FriendsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.backgroundColor = .systemOrange
-        Session.shared.getFriends { (users) in
-            self.users = users.sorted(by: { $0.name < $1.name })
-            self.tableView.reloadData()
+        Session.shared.getFriends { () in
+            do {
+                let realm = try Realm()
+                self.users = realm.objects(User.self).sorted(by: { $0.name < $1.name })
+                self.tableView.reloadData()
+            } catch {
+                print(error)
+            }
         }
     }
 

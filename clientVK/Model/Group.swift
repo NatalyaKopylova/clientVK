@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 import RealmSwift
 
-class Group: Object {
+class Group: Object, HasIdProtocol {
     @objc dynamic var id: Int = 0
     @objc dynamic var name: String = ""
     @objc dynamic var groupDescription: String?

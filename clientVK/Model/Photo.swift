@@ -8,7 +8,7 @@
 import Foundation
 import RealmSwift
 
-class Photo: Object {
+class Photo: Object, HasIdProtocol {
      
     @objc dynamic var id: Int = 0
     var sizes: List<PhotoSize> = List<PhotoSize>()
