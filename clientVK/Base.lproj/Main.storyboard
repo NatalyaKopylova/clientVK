@@ -326,46 +326,12 @@
                         <barButtonItem key="backBarButtonItem" title=" " id="W80-C9-1nf"/>
                         <barButtonItem key="rightBarButtonItem" title="Поиск" id="pM5-sz-ncB">
                             <color key="tintColor" systemColor="systemOrangeColor"/>
-                            <connections>
-                                <segue destination="E2c-n4-hyy" kind="show" id="bK0-bu-bJq"/>
-                            </connections>
                         </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u0e-8A-a0Z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2661" y="-225"/>
-        </scene>
-        <!--Поиск групп-->
-        <scene sceneID="u81-s9-86w">
-            <objects>
-                <tableViewController id="E2c-n4-hyy" customClass="GroupTableViewController" customModule="clientVK" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="PKo-Rk-b3x">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <connections>
-                            <outlet property="dataSource" destination="E2c-n4-hyy" id="IXx-Bh-MeX"/>
-                            <outlet property="delegate" destination="E2c-n4-hyy" id="3i9-2h-UTG"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Поиск групп" id="viM-gQ-Ejt">
-                        <barButtonItem key="rightBarButtonItem" title="Выйти" style="plain" id="cg8-iT-v31">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="W32-wK-mmt">
-                                <rect key="frame" x="302" y="7" width="92" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Выйти"/>
-                                <connections>
-                                    <segue destination="LWt-kO-Lm5" kind="unwind" unwindAction="exit2With_seg:" id="erC-Zs-CiS"/>
-                                </connections>
-                            </button>
-                        </barButtonItem>
-                    </navigationItem>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="fA3-0d-EHY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <exit id="LWt-kO-Lm5" userLabel="Exit" sceneMemberID="exit"/>
-            </objects>
-            <point key="canvasLocation" x="3351" y="-225"/>
         </scene>
         <!--Группы-->
         <scene sceneID="nLv-bd-3Mp">
@@ -595,7 +561,7 @@
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7Nz-lE-MZy">
                                             <rect key="frame" x="4" y="4" width="120" height="120"/>
                                         </imageView>
-                                        <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hha-jD-cDh" customClass="LikeCountView" customModule="clientVK" customModuleProvider="target">
+                                        <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hha-jD-cDh" customClass="LikeCountView" customModule="clientVK" customModuleProvider="target">
                                             <rect key="frame" x="65" y="90" width="55" height="30"/>
                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             <constraints>

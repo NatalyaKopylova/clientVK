@@ -10,23 +10,29 @@ import RealmSwift
 
 class MyGroupTableViewController: UITableViewController {
     
-    var myGroups = [Group]()
+    var realm: Realm!
+    var token: NotificationToken?
+    var myGroupsResults: Results<Group>!
+    var myGroups: [Group] { myGroupsResults.map { $0 }.sorted(by: { $0.name < $1.name }) }
+    let service = VKService()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.rowHeight = UITableView.automaticDimension
-        Session.shared.getGroups { () in
-            do {
-                let realm = try Realm()
-                self.myGroups = realm.objects(Group.self).sorted(by: { $0.name < $1.name })
-                self.tableView.reloadData()
+        let nib = UINib(nibName: String(describing: GroupTableViewCell.self), bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: String(describing: GroupTableViewCell.self))
+            
+        do {
+                realm = try Realm()
+                myGroupsResults = realm.objects(Group.self)
             } catch {
                 print(error)
             }
-        }
         
-        let nib = UINib(nibName: String(describing: GroupTableViewCell.self), bundle: nil)
-        tableView.register(nib, forCellReuseIdentifier: String(describing: GroupTableViewCell.self))
+        service.getGroups()
+        token = myGroupsResults.observe(on: DispatchQueue.main, { _ in
+            self.tableView.reloadData()
+        })
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -57,9 +63,9 @@ class MyGroupTableViewController: UITableViewController {
 //        return 120
 //    }
     
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        DataStorage.shared.myGroups.remove(at: indexPath.row)
-        self.tableView.reloadData()
-    }
+//    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+//        DataStorage.shared.myGroups.remove(at: indexPath.row)
+//        self.tableView.reloadData()
+//    }
 
 }
