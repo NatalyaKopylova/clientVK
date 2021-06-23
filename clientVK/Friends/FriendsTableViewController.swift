@@ -12,20 +12,27 @@ import RealmSwift
 class FriendsTableViewController: UITableViewController {
     
     let showUsersPhotosIdentifier = "showUsersPhotos"
-    var users = [User]()
-
+    var realm: Realm!
+    var token: NotificationToken?
+    var usersResult: Results<User>!
+    var users: [User] { usersResult.map { $0 }.sorted(by: { $0.name < $1.name }) }
+    let service = VKService()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.backgroundColor = .systemOrange
-        Session.shared.getFriends { () in
-            do {
-                let realm = try Realm()
-                self.users = realm.objects(User.self).sorted(by: { $0.name < $1.name })
-                self.tableView.reloadData()
-            } catch {
-                print(error)
-            }
+        do {
+            realm = try Realm()
+            usersResult = realm.objects(User.self)
+        } catch {
+            print(error)
         }
+        tableView.backgroundColor = .systemOrange
+        
+        service.getFriends()
+        
+        token = usersResult.observe(on: DispatchQueue.main, { _ in
+            self.tableView.reloadData()
+        })
     }
 
     // MARK: - Table view data source

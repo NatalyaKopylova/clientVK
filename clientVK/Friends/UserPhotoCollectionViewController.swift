@@ -13,21 +13,27 @@ private let reuseIdentifier = "Cell"
 
 class UserPhotoCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
-    var photos = [Photo]()
+    var realm: Realm!
+    var token: NotificationToken?
+    var photoResults: Results<Photo>!
+    var photos: [Photo] { photoResults.map { $0 }}
     var userId: Int!
+    let service = VKService()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        Session.shared.getPhotos(ownerId: userId) { () in
             do {
-                let realm = try Realm()
-                self.photos = realm.objects(Photo.self).map {$0}
-                self.collectionView.reloadData()
+                realm = try Realm()
+                photoResults = realm.objects(Photo.self).filter("ownerId == %@", userId)
             } catch {
                 print(error)
             }
-        }
+         
+        service.getPhotos(ownerId: userId)
+    
+        token = photoResults.observe(on: DispatchQueue.main, { _ in
+        self.collectionView.reloadData()
+    })
     }
 
     /*

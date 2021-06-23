@@ -10,12 +10,12 @@ import UIKit
 class NewsScreenViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NewsTableViewCellDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        DataStorage.shared.newsScreen.count
+        DataStorageOld.shared.newsScreen.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: NewsTableViewCell.self)) as! NewsTableViewCell
-        let news = DataStorage.shared.newsScreen[indexPath.row]
+        let news = DataStorageOld.shared.newsScreen[indexPath.row]
         cell.configWith(news: news)
         cell.delegate = self
         return cell
@@ -29,7 +29,7 @@ class NewsScreenViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let images = DataStorage.shared.newsScreen[indexPath.row].newsPhotos
+        let images = DataStorageOld.shared.newsScreen[indexPath.row].newsPhotos 
         let galleryVC = UIStoryboard(name: "Main", bundle: nil)
             .instantiateViewController(withIdentifier: "GalleryViewController") as! GalleryViewController
         
