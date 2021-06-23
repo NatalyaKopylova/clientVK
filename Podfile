@@ -8,4 +8,5 @@ target 'clientVK' do
   pod 'AlamofireImage', '~> 4.1'
   # Pods for clientVK
   pod 'RealmSwift', '=10.1.4'
+  pod 'Firebase/Database'
 end

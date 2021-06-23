@@ -324,14 +324,48 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Мои группы" id="RTN-qZ-A9N">
                         <barButtonItem key="backBarButtonItem" title=" " id="W80-C9-1nf"/>
-                        <barButtonItem key="rightBarButtonItem" title="Поиск" id="pM5-sz-ncB">
+                        <barButtonItem key="rightBarButtonItem" image="star" catalog="system" id="pM5-sz-ncB">
                             <color key="tintColor" systemColor="systemOrangeColor"/>
+                            <connections>
+                                <segue destination="sl9-ay-07d" kind="show" identifier="" id="JdV-r3-0dv"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u0e-8A-a0Z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2661" y="-225"/>
+        </scene>
+        <!--Избранные группы-->
+        <scene sceneID="wIi-lH-0Fm">
+            <objects>
+                <tableViewController id="sl9-ay-07d" customClass="FavoriteGroupsTableViewController" customModule="clientVK" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="55U-dK-MM0">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="m8G-xg-xQu">
+                                <rect key="frame" x="0.0" y="24.5" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="m8G-xg-xQu" id="8gE-cw-ybF">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="sl9-ay-07d" id="WeS-Jb-bFq"/>
+                            <outlet property="delegate" destination="sl9-ay-07d" id="CkW-sA-Qkt"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Избранные группы" id="3gl-SP-RKF">
+                        <barButtonItem key="backBarButtonItem" title=" " id="0EB-Ay-JrK"/>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QMP-RO-BfV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3351" y="-225"/>
         </scene>
         <!--Группы-->
         <scene sceneID="nLv-bd-3Mp">
@@ -724,6 +758,7 @@
         <image name="heart.text.square" catalog="system" width="128" height="114"/>
         <image name="person" catalog="system" width="128" height="117"/>
         <image name="person.3" catalog="system" width="128" height="62"/>
+        <image name="star" catalog="system" width="128" height="116"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

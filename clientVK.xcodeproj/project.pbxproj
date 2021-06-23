@@ -32,6 +32,8 @@
 		A965850E2673843400C648B1 /* DataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A965850D2673843400C648B1 /* DataStorage.swift */; };
 		A96585102673850A00C648B1 /* VKService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A965850F2673850A00C648B1 /* VKService.swift */; };
 		A9658512267388B200C648B1 /* DataStorageOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9658511267388B200C648B1 /* DataStorageOld.swift */; };
+		A9658514267FCC3C00C648B1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A9658513267FCC3C00C648B1 /* GoogleService-Info.plist */; };
+		A96585172680BD4500C648B1 /* FavoriteGroupsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96585162680BD4500C648B1 /* FavoriteGroupsTableViewController.swift */; };
 		A967E3B326661A4F007A97F2 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A967E3B226661A4E007A97F2 /* Photo.swift */; };
 		A967E3B626661B72007A97F2 /* PhotoSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = A967E3B526661B72007A97F2 /* PhotoSize.swift */; };
 		A97C2179262D882C0011D868 /* LikeCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97C2178262D882C0011D868 /* LikeCountView.swift */; };
@@ -84,6 +86,8 @@
 		A965850D2673843400C648B1 /* DataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStorage.swift; sourceTree = "<group>"; };
 		A965850F2673850A00C648B1 /* VKService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKService.swift; sourceTree = "<group>"; };
 		A9658511267388B200C648B1 /* DataStorageOld.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataStorageOld.swift; sourceTree = "<group>"; };
+		A9658513267FCC3C00C648B1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		A96585162680BD4500C648B1 /* FavoriteGroupsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteGroupsTableViewController.swift; sourceTree = "<group>"; };
 		A967E3B226661A4E007A97F2 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		A967E3B526661B72007A97F2 /* PhotoSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSize.swift; sourceTree = "<group>"; };
 		A97C2178262D882C0011D868 /* LikeCountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeCountView.swift; sourceTree = "<group>"; };
@@ -251,6 +255,7 @@
 		A9DAF5C1261B0B4600C7BCB5 /* clientVK */ = {
 			isa = PBXGroup;
 			children = (
+				A9658513267FCC3C00C648B1 /* GoogleService-Info.plist */,
 				A965850C267383D700C648B1 /* DataStorage */,
 				A999175D265BCB7E00B368A8 /* Networking */,
 				A95B3508264E9345008607EE /* Gallery */,
@@ -303,6 +308,7 @@
 				A91047D72627188700B216DB /* GroupTableViewCell.swift */,
 				A91047D82627188700B216DB /* GroupTableViewCell.xib */,
 				A91047DC26285EB600B216DB /* MyGroupTableViewController.swift */,
+				A96585162680BD4500C648B1 /* FavoriteGroupsTableViewController.swift */,
 			);
 			path = Groups;
 			sourceTree = "<group>";
@@ -371,6 +377,7 @@
 				A908289226396930008D0673 /* MySearchBarView.xib in Resources */,
 				A9DAF5CA261B0B4600C7BCB5 /* Main.storyboard in Resources */,
 				A91047DA2627188700B216DB /* GroupTableViewCell.xib in Resources */,
+				A9658514267FCC3C00C648B1 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -428,6 +435,7 @@
 				A91047DD26285EB600B216DB /* MyGroupTableViewController.swift in Sources */,
 				A999176F26612A4E00B368A8 /* VKAPI.swift in Sources */,
 				A9DAF5EE2625989500C7BCB5 /* Group.swift in Sources */,
+				A96585172680BD4500C648B1 /* FavoriteGroupsTableViewController.swift in Sources */,
 				A9DAF5F42625B6B100C7BCB5 /* UserTableViewCell.swift in Sources */,
 				A95B3504264D563D008607EE /* RotateInteractiveTransition.swift in Sources */,
 				A90828802632D8D4008D0673 /* MosaicLayout.swift in Sources */,
