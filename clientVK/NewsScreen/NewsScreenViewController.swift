@@ -37,7 +37,7 @@ class NewsScreenViewController: UIViewController, UITableViewDelegate, UITableVi
         let cell = tableView.cellForRow(at: indexPath) as! NewsTableViewCell
         let firstCollectionViewCell = cell.fhotoCollectionView.cellForItem(at: IndexPath(row: 0, section: 0))!
         let convertedFromFrame = view.convert(firstCollectionViewCell.frame, from: cell.fhotoCollectionView)
-        galleryVC.setImages(images: images, currentIndex: 0, fromFrame: convertedFromFrame)
+//        galleryVC.setImages(images: images, currentIndex: 0, fromFrame: convertedFromFrame)
         galleryVC.setupTransition()
         self.present(galleryVC, animated: true, completion: nil)
         cell.setSelected(false, animated: false)
@@ -50,7 +50,7 @@ class NewsScreenViewController: UIViewController, UITableViewDelegate, UITableVi
         galleryVC.modalPresentationStyle = .custom
         let cell = collectionView.cellForItem(at: IndexPath(row: currentIndex, section: 0))!
         let convertedFromFrame = view.convert(cell.frame, from: collectionView)
-        galleryVC.setImages(images: images, currentIndex: currentIndex, fromFrame: convertedFromFrame)
+//        galleryVC.setImages(images: images, currentIndex: currentIndex, fromFrame: convertedFromFrame)
         galleryVC.setupTransition()
         self.present(galleryVC, animated: true, completion: nil)
     }
