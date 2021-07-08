@@ -9,12 +9,29 @@ import UIKit
 import RealmSwift
 import Firebase
 
-class MyGroupTableViewController: UITableViewController {
+class MyGroupTableViewController: UITableViewController, UISearchBarDelegate, MySearchBarViewDelegate {
     
+    var searchText: String?
+    
+    func textDidChange(text: String) {
+        searchText = text
+        tableView.reloadData()
+    }
+    
+    func cancelPressed() {
+        searchText = nil
+    }
+
     var realm: Realm!
     var token: NotificationToken?
     var myGroupsResults: Results<Group>!
-    var myGroups: [Group] { myGroupsResults.map { $0 }.sorted(by: { $0.name < $1.name }) }
+    var myGroups: [Group] {
+        var _myGroups: [Group] = myGroupsResults.map { $0 }
+        if let searchText = searchText, searchText.count > 0 {
+            _myGroups = _myGroups.filter { $0.name.lowercased().contains(searchText.lowercased())}
+        }
+        return _myGroups.sorted(by: { $0.name < $1.name }) }
+    
     let service = VKService()
     
     var favoriteGroups = [Group]()
@@ -44,6 +61,18 @@ class MyGroupTableViewController: UITableViewController {
             self.favoriteGroups = self.myGroups.filter({ids.contains($0.id)})
 
         }
+        
+        let searchBarContainer = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 50))
+        let searchBar = MySearchBarView()
+        
+        searchBar.translatesAutoresizingMaskIntoConstraints = false
+        searchBarContainer.addSubview(searchBar)
+        searchBar.topAnchor.constraint(equalTo: searchBarContainer.topAnchor).isActive = true
+        searchBar.bottomAnchor.constraint(equalTo: searchBarContainer.bottomAnchor).isActive = true
+        searchBar.leadingAnchor.constraint(equalTo: searchBarContainer.leadingAnchor).isActive = true
+        searchBar.trailingAnchor.constraint(equalTo: searchBarContainer.trailingAnchor).isActive = true
+        searchBar.delegate = self
+        tableView.tableHeaderView = searchBarContainer
         
     }
     
@@ -83,7 +112,7 @@ class MyGroupTableViewController: UITableViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let destination = segue.destination as? FavoriteGroupsTableViewController else { return }
+        guard let destination = segue.destination as? FavouriteGroupsTableViewController else { return }
         destination.myGroups = myGroups
     }
     

@@ -31,7 +31,7 @@ class GalleryViewController: UIViewController {
     
     @IBInspectable var inactiveIndicatorColor: UIColor = UIColor.lightGray
     @IBInspectable var activeIndicatorColor: UIColor = UIColor.black
-    private var images = [UIImage]()
+    private var photos = [Photo]()
     private var currentIndex = 0
     private var interactiveAnimator: UIViewPropertyAnimator!
     private var mainImageView = UIImageView() //UIView()
@@ -63,7 +63,7 @@ class GalleryViewController: UIViewController {
         customPageView.backgroundColor = UIColor.clear
         customPageView.frame = CGRect(x: 1, y: 1, width: 150, height: 50)
         customPageView.layer.zPosition = 100
-        customPageView.numberOfPages = self.images.count
+        customPageView.numberOfPages = self.photos.count
         customPageView.currentPage = currentIndex
         customPageView.pageIndicatorTintColor = self.inactiveIndicatorColor
         customPageView.currentPageIndicatorTintColor = self.activeIndicatorColor
@@ -76,15 +76,24 @@ class GalleryViewController: UIViewController {
     private func onChange(isLeft: Bool) {
         self.mainImageView.transform = .identity
         self.secondaryImageView.transform = .identity
-        self.mainImageView.image = images[currentIndex]
+        let photo = photos[self.currentIndex]
+        if let size = photo.sizes.first(where: { $0.type == "m"}), let url = URL(string: size.url) {
+            mainImageView.af.setImage(withURL: url)
+        }
         
         if isLeft {
-            self.secondaryImageView.image = images[self.currentIndex + 1]
+            let photo = photos[self.currentIndex + 1]
+            if let size = photo.sizes.first(where: { $0.type == "m"}), let url = URL(string: size.url) {
+                secondaryImageView.af.setImage(withURL: url)
+            }
             self.secondaryImageView.transform = CGAffineTransform(translationX: UIScreen.main.bounds.width, y: 0)
         }
         else {
             self.secondaryImageView.transform = CGAffineTransform(translationX: -UIScreen.main.bounds.width, y: 0)
-            self.secondaryImageView.image = images[currentIndex - 1]
+            let photo = photos[self.currentIndex - 1]
+            if let size = photo.sizes.first(where: { $0.type == "m"}), let url = URL(string: size.url) {
+                secondaryImageView.af.setImage(withURL: url)
+            }
         }
     }
     
@@ -97,7 +106,10 @@ class GalleryViewController: UIViewController {
         else {
             self.currentIndex -= 1
         }
-        self.mainImageView.image = self.images[self.currentIndex]
+        let photo = photos[self.currentIndex]
+        if let size = photo.sizes.first(where: { $0.type == "m"}), let url = URL(string: size.url) {
+            mainImageView.af.setImage(withURL: url)
+        }
         photoGalleryView.bringSubviewToFront(self.mainImageView)
         self.customPageView.currentPage = self.currentIndex
     }
@@ -112,7 +124,10 @@ class GalleryViewController: UIViewController {
         switch recognizer.state {
         case .began:
             self.mainImageView.transform = .identity
-            self.mainImageView.image = images[currentIndex]
+            let photo = photos[self.currentIndex]
+            if let size = photo.sizes.first(where: { $0.type == "m"}), let url = URL(string: size.url) {
+                mainImageView.af.setImage(withURL: url)
+            }
             self.secondaryImageView.transform = .identity
             photoGalleryView.bringSubviewToFront(self.mainImageView)
             
@@ -138,7 +153,7 @@ class GalleryViewController: UIViewController {
             }
             
             if translation.x < 0 && (!isLeftSwipe) && (!chooseFlag) {
-                if self.currentIndex == (images.count - 1) {
+                if self.currentIndex == (photos.count - 1) {
                     interactiveAnimator.stopAnimation(true)
                     return
                 }
@@ -230,11 +245,14 @@ class GalleryViewController: UIViewController {
         }
     }
 
-    func setImages(images: [UIImage], currentIndex: Int, fromFrame: CGRect) {
-        self.images = images
-        self.mainImageView.image = self.images[currentIndex]
+    func setImages(images: [Photo], currentIndex: Int, fromFrame: CGRect) {
+        self.photos = images
+        let photo = photos[self.currentIndex]
+        if let size = photo.sizes.first(where: { $0.type == "m"}), let url = URL(string: size.url) {
+            mainImageView.af.setImage(withURL: url)
+        }
         self.currentIndex = currentIndex
-        customPageView.numberOfPages = self.images.count
+        customPageView.numberOfPages = self.photos.count
         self.fromFrame = fromFrame
     }
     

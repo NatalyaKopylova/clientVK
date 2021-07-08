@@ -8,7 +8,7 @@
 import UIKit
 import Firebase
 
-class FavoriteGroupsTableViewController: UITableViewController {
+class FavouriteGroupsTableViewController: UITableViewController {
 
     var favoriteGroups = [Group]()
     var myGroups = [Group]()

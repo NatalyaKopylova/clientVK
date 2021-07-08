@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol MySearchBarViewDelegate: class {
+protocol MySearchBarViewDelegate: AnyObject {
     func cancelPressed()
     func textDidChange(text: String)
     

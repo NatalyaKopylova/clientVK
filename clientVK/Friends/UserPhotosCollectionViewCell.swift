@@ -23,5 +23,5 @@ class UserPhotosCollectionViewCell: UICollectionViewCell {
     }
 //    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
 //        startAnimate()
-//    }  
+//    }
 }
