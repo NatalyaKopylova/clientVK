@@ -410,84 +410,85 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="NewsTableViewCell" rowHeight="525" id="ke2-K9-RNi" customClass="NewsTableViewCell" customModule="clientVK" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="24.5" width="414" height="525"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="NewsHeaderTableViewCell" id="Ojh-DR-oQ7" userLabel="NewsHeaderTableViewCell" customClass="NewsHeaderTableViewCell" customModule="clientVK" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="24.5" width="414" height="81.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ke2-K9-RNi" id="6HD-u6-ZtZ">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="525"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ojh-DR-oQ7" id="nBb-n9-U1Y">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="81.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LiU-1i-Npt">
+                                                    <rect key="frame" x="16" y="8" width="65.5" height="65.5"/>
+                                                    <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="LiU-1i-Npt" secondAttribute="height" id="TiG-u0-Hme"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="luB-aY-EwC">
+                                                    <rect key="frame" x="97.5" y="16" width="280.5" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LNh-ia-bZx">
+                                                    <rect key="frame" x="356.5" y="44.5" width="41.5" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="luB-aY-EwC" firstAttribute="top" secondItem="nBb-n9-U1Y" secondAttribute="top" constant="16" id="Hwn-uA-5lZ"/>
+                                                <constraint firstItem="luB-aY-EwC" firstAttribute="leading" secondItem="LiU-1i-Npt" secondAttribute="trailing" constant="16" id="IIl-qO-0LH"/>
+                                                <constraint firstAttribute="bottom" secondItem="LiU-1i-Npt" secondAttribute="bottom" constant="8" id="J1x-PT-P3Q"/>
+                                                <constraint firstItem="LiU-1i-Npt" firstAttribute="top" secondItem="nBb-n9-U1Y" secondAttribute="top" constant="8" id="Jug-QY-5Pa"/>
+                                                <constraint firstItem="LNh-ia-bZx" firstAttribute="top" secondItem="luB-aY-EwC" secondAttribute="bottom" constant="8" id="gAH-8h-3Go"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="luB-aY-EwC" secondAttribute="trailing" constant="16" id="k9W-hb-KRk"/>
+                                                <constraint firstAttribute="bottom" secondItem="LNh-ia-bZx" secondAttribute="bottom" constant="16" id="vvi-LY-zJW"/>
+                                                <constraint firstItem="LiU-1i-Npt" firstAttribute="leading" secondItem="nBb-n9-U1Y" secondAttribute="leading" constant="16" id="wcX-0d-rEc"/>
+                                                <constraint firstAttribute="trailing" secondItem="LNh-ia-bZx" secondAttribute="trailing" constant="16" id="zU4-ds-HEK"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="avatarImageView" destination="LiU-1i-Npt" id="x0j-mo-ygi"/>
+                                            <outlet property="headerNewsLabel" destination="luB-aY-EwC" id="RSS-of-mDl"/>
+                                            <outlet property="timeOfNewsCreationLabel" destination="LNh-ia-bZx" id="5iY-lz-xpP"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="NewsTextTableViewCell" id="977-fJ-O7U" customClass="NewsTextTableViewCell" customModule="clientVK" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="106" width="414" height="38"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="977-fJ-O7U" id="SZO-Ni-gEA">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="38"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zp8-Je-Vma">
-                                                    <rect key="frame" x="8" y="16" width="398" height="35"/>
+                                                    <rect key="frame" x="8" y="8" width="398" height="22"/>
                                                     <fontDescription key="fontDescription" type="italicSystem" pointSize="18"/>
                                                     <color key="textColor" systemColor="systemOrangeColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="34" translatesAutoresizingMaskIntoConstraints="NO" id="qAg-Jg-dF8">
-                                                    <rect key="frame" x="8" y="497" width="159.5" height="20"/>
-                                                    <subviews>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XiO-oQ-AwE" customClass="MyButtonNewsScreen" customModule="clientVK" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="0.0" width="30" height="20"/>
-                                                            <color key="tintColor" systemColor="systemOrangeColor"/>
-                                                            <state key="normal" title="Button">
-                                                                <color key="titleColor" systemColor="systemOrangeColor"/>
-                                                            </state>
-                                                            <userDefinedRuntimeAttributes>
-                                                                <userDefinedRuntimeAttribute type="string" keyPath="text" value="1"/>
-                                                                <userDefinedRuntimeAttribute type="image" keyPath="icon" value="heart" catalog="system"/>
-                                                            </userDefinedRuntimeAttributes>
-                                                        </button>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yJ2-WQ-5dx" customClass="MyButtonNewsScreen" customModule="clientVK" customModuleProvider="target">
-                                                            <rect key="frame" x="64" y="0.0" width="30" height="20"/>
-                                                            <color key="tintColor" systemColor="systemOrangeColor"/>
-                                                            <state key="normal" title="Button">
-                                                                <color key="titleColor" systemColor="systemOrangeColor"/>
-                                                            </state>
-                                                            <userDefinedRuntimeAttributes>
-                                                                <userDefinedRuntimeAttribute type="string" keyPath="text" value="1"/>
-                                                                <userDefinedRuntimeAttribute type="image" keyPath="icon" value="ellipsis.bubble" catalog="system"/>
-                                                            </userDefinedRuntimeAttributes>
-                                                        </button>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cBp-MM-LNV" customClass="MyButtonNewsScreen" customModule="clientVK" customModuleProvider="target">
-                                                            <rect key="frame" x="128" y="0.0" width="31.5" height="20"/>
-                                                            <color key="tintColor" systemColor="systemOrangeColor"/>
-                                                            <state key="normal" title="Button">
-                                                                <color key="titleColor" systemColor="systemOrangeColor"/>
-                                                            </state>
-                                                            <userDefinedRuntimeAttributes>
-                                                                <userDefinedRuntimeAttribute type="image" keyPath="icon" value="arrowshape.turn.up.right.fill" catalog="system"/>
-                                                                <userDefinedRuntimeAttribute type="string" keyPath="text" value="0"/>
-                                                            </userDefinedRuntimeAttributes>
-                                                        </button>
-                                                    </subviews>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="20" id="4eE-8K-uJ4"/>
-                                                    </constraints>
-                                                </stackView>
-                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Tci-CX-9B1">
-                                                    <rect key="frame" x="368" y="497" width="38" height="20"/>
-                                                    <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="eye" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="gDW-Ed-KF1">
-                                                            <rect key="frame" x="0.0" y="1.5" width="20" height="16.5"/>
-                                                            <color key="tintColor" systemColor="systemOrangeColor"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="width" secondItem="gDW-Ed-KF1" secondAttribute="height" multiplier="1:1" id="OSH-0z-kx6"/>
-                                                            </constraints>
-                                                        </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ls3-9F-dhx">
-                                                            <rect key="frame" x="28" y="0.0" width="10" height="20"/>
-                                                            <color key="tintColor" systemColor="systemOrangeColor"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                    </subviews>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="20" id="TEU-71-jbB"/>
-                                                    </constraints>
-                                                </stackView>
-                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="LBo-od-xgR">
-                                                    <rect key="frame" x="0.0" y="67" width="414" height="414"/>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="zp8-Je-Vma" secondAttribute="trailing" constant="8" id="I65-TS-BhT"/>
+                                                <constraint firstItem="zp8-Je-Vma" firstAttribute="leading" secondItem="SZO-Ni-gEA" secondAttribute="leading" constant="8" id="Q6N-6C-KWx"/>
+                                                <constraint firstItem="zp8-Je-Vma" firstAttribute="top" secondItem="SZO-Ni-gEA" secondAttribute="top" constant="8" id="Umk-5k-lOc"/>
+                                                <constraint firstAttribute="bottom" secondItem="zp8-Je-Vma" secondAttribute="bottom" constant="8" id="sMS-w3-1up"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="textNewsLabel" destination="zp8-Je-Vma" id="w1K-ub-FHt"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="NewsPhotoTableViewCell" id="ke2-K9-RNi" customClass="NewsPhotoTableViewCell" customModule="clientVK" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="144" width="414" height="414.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ke2-K9-RNi" id="6HD-u6-ZtZ">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="414.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="LBo-od-xgR" userLabel="Photo Collection View">
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="414.5"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="LBo-od-xgR" secondAttribute="height" multiplier="1:1" id="hsf-fP-zVS"/>
@@ -521,26 +522,104 @@
                                                 </collectionView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="zp8-Je-Vma" firstAttribute="top" secondItem="6HD-u6-ZtZ" secondAttribute="top" constant="16" id="3oO-7V-4G2"/>
-                                                <constraint firstAttribute="bottom" secondItem="qAg-Jg-dF8" secondAttribute="bottom" constant="8" id="5Zh-sX-2NT"/>
-                                                <constraint firstItem="qAg-Jg-dF8" firstAttribute="leading" secondItem="6HD-u6-ZtZ" secondAttribute="leading" constant="8" id="6ca-ZG-8cJ"/>
                                                 <constraint firstAttribute="trailing" secondItem="LBo-od-xgR" secondAttribute="trailing" id="8Xv-1E-PeA"/>
-                                                <constraint firstItem="zp8-Je-Vma" firstAttribute="leading" secondItem="6HD-u6-ZtZ" secondAttribute="leading" constant="8" id="APC-4w-BYA"/>
-                                                <constraint firstItem="qAg-Jg-dF8" firstAttribute="top" secondItem="LBo-od-xgR" secondAttribute="bottom" constant="16" id="Ejk-hr-ars"/>
-                                                <constraint firstItem="LBo-od-xgR" firstAttribute="top" secondItem="zp8-Je-Vma" secondAttribute="bottom" constant="16" id="IPh-3t-G2M"/>
-                                                <constraint firstAttribute="trailing" secondItem="Tci-CX-9B1" secondAttribute="trailing" constant="8" id="mp8-a7-Ema"/>
-                                                <constraint firstAttribute="bottom" secondItem="Tci-CX-9B1" secondAttribute="bottom" constant="8" id="tNa-Qz-y0b"/>
+                                                <constraint firstItem="LBo-od-xgR" firstAttribute="top" secondItem="6HD-u6-ZtZ" secondAttribute="top" id="VnY-WO-mqS"/>
                                                 <constraint firstItem="LBo-od-xgR" firstAttribute="leading" secondItem="6HD-u6-ZtZ" secondAttribute="leading" id="x2U-04-UEI"/>
-                                                <constraint firstAttribute="trailing" secondItem="zp8-Je-Vma" secondAttribute="trailing" constant="8" id="y5O-7B-xHW"/>
+                                                <constraint firstAttribute="bottom" secondItem="LBo-od-xgR" secondAttribute="bottom" id="zVj-cX-M0a"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="commentButton" destination="yJ2-WQ-5dx" id="Ck0-Ps-2WE"/>
-                                            <outlet property="fhotoCollectionView" destination="LBo-od-xgR" id="US1-o3-aVl"/>
-                                            <outlet property="likeButton" destination="XiO-oQ-AwE" id="jUw-Qc-krw"/>
-                                            <outlet property="repostButton" destination="cBp-MM-LNV" id="fW1-xt-NIW"/>
-                                            <outlet property="titleLabel" destination="zp8-Je-Vma" id="tLV-zo-yPU"/>
-                                            <outlet property="viewingCountLabel" destination="ls3-9F-dhx" id="6ND-YF-CDg"/>
+                                            <outlet property="photosCollectionView" destination="LBo-od-xgR" id="oxL-u7-alY"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="NewsInfoTableViewCell" id="aKj-53-Pgg" customClass="NewsInfoTableViewCell" customModule="clientVK" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="558.5" width="414" height="36.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="aKj-53-Pgg" id="9Tp-yF-nDg">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="36.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="34" translatesAutoresizingMaskIntoConstraints="NO" id="qAg-Jg-dF8">
+                                                    <rect key="frame" x="16" y="8" width="159.5" height="20.5"/>
+                                                    <subviews>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XiO-oQ-AwE" userLabel="likes" customClass="MyButtonNewsScreen" customModule="clientVK" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="0.0" width="30" height="20.5"/>
+                                                            <color key="tintColor" systemColor="systemOrangeColor"/>
+                                                            <state key="normal" title="Button">
+                                                                <color key="titleColor" systemColor="systemOrangeColor"/>
+                                                            </state>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="string" keyPath="text" value="1"/>
+                                                                <userDefinedRuntimeAttribute type="image" keyPath="icon" value="heart" catalog="system"/>
+                                                            </userDefinedRuntimeAttributes>
+                                                        </button>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yJ2-WQ-5dx" userLabel="comments" customClass="MyButtonNewsScreen" customModule="clientVK" customModuleProvider="target">
+                                                            <rect key="frame" x="64" y="0.0" width="30" height="20.5"/>
+                                                            <color key="tintColor" systemColor="systemOrangeColor"/>
+                                                            <state key="normal" title="Button">
+                                                                <color key="titleColor" systemColor="systemOrangeColor"/>
+                                                            </state>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="string" keyPath="text" value="1"/>
+                                                                <userDefinedRuntimeAttribute type="image" keyPath="icon" value="ellipsis.bubble" catalog="system"/>
+                                                            </userDefinedRuntimeAttributes>
+                                                        </button>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cBp-MM-LNV" userLabel="repost" customClass="MyButtonNewsScreen" customModule="clientVK" customModuleProvider="target">
+                                                            <rect key="frame" x="128" y="0.0" width="31.5" height="20.5"/>
+                                                            <color key="tintColor" systemColor="systemOrangeColor"/>
+                                                            <state key="normal" title="Button">
+                                                                <color key="titleColor" systemColor="systemOrangeColor"/>
+                                                            </state>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="image" keyPath="icon" value="arrowshape.turn.up.right.fill" catalog="system"/>
+                                                                <userDefinedRuntimeAttribute type="string" keyPath="text" value="0"/>
+                                                            </userDefinedRuntimeAttributes>
+                                                        </button>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="20" id="4eE-8K-uJ4"/>
+                                                    </constraints>
+                                                </stackView>
+                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Tci-CX-9B1">
+                                                    <rect key="frame" x="359.5" y="8" width="38.5" height="20.5"/>
+                                                    <subviews>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="eye" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="gDW-Ed-KF1">
+                                                            <rect key="frame" x="0.0" y="1.5" width="20.5" height="17"/>
+                                                            <color key="tintColor" systemColor="systemOrangeColor"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" secondItem="gDW-Ed-KF1" secondAttribute="height" multiplier="1:1" id="OSH-0z-kx6"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ls3-9F-dhx">
+                                                            <rect key="frame" x="28.5" y="0.0" width="10" height="20.5"/>
+                                                            <color key="tintColor" systemColor="systemOrangeColor"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="gDW-Ed-KF1" firstAttribute="top" secondItem="Tci-CX-9B1" secondAttribute="top" constant="8" id="Kbu-RV-x8M"/>
+                                                        <constraint firstAttribute="height" constant="20" id="TEU-71-jbB"/>
+                                                        <constraint firstAttribute="bottom" secondItem="gDW-Ed-KF1" secondAttribute="bottom" constant="8" id="XzC-I1-cSD"/>
+                                                        <constraint firstItem="ls3-9F-dhx" firstAttribute="leading" secondItem="gDW-Ed-KF1" secondAttribute="trailing" constant="8" id="xXC-nw-Dol"/>
+                                                    </constraints>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="qAg-Jg-dF8" firstAttribute="top" secondItem="9Tp-yF-nDg" secondAttribute="top" constant="8" id="D5h-KI-bkd"/>
+                                                <constraint firstItem="Tci-CX-9B1" firstAttribute="top" secondItem="9Tp-yF-nDg" secondAttribute="top" constant="8" id="I2F-Xv-w95"/>
+                                                <constraint firstAttribute="bottom" secondItem="qAg-Jg-dF8" secondAttribute="bottom" constant="8" id="fUX-ic-cgC"/>
+                                                <constraint firstAttribute="bottom" secondItem="Tci-CX-9B1" secondAttribute="bottom" constant="8" id="fi5-ug-Hjh"/>
+                                                <constraint firstAttribute="trailing" secondItem="Tci-CX-9B1" secondAttribute="trailing" constant="16" id="h1M-SV-Zhr"/>
+                                                <constraint firstItem="qAg-Jg-dF8" firstAttribute="leading" secondItem="9Tp-yF-nDg" secondAttribute="leading" constant="16" id="i7s-D0-8yW"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="commentsButton" destination="yJ2-WQ-5dx" id="ngs-X9-sRx"/>
+                                            <outlet property="likeButton" destination="XiO-oQ-AwE" id="it2-TH-5dd"/>
+                                            <outlet property="repostButton" destination="cBp-MM-LNV" id="dTh-wj-SVb"/>
+                                            <outlet property="viewsCountLabel" destination="ls3-9F-dhx" id="kwo-2S-LMq"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -765,6 +844,9 @@
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemOrangeColor">
             <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

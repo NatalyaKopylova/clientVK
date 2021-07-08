@@ -38,6 +38,10 @@
 		A967E3B626661B72007A97F2 /* PhotoSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = A967E3B526661B72007A97F2 /* PhotoSize.swift */; };
 		A97C2179262D882C0011D868 /* LikeCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97C2178262D882C0011D868 /* LikeCountView.swift */; };
 		A97C217E262D89140011D868 /* HeartButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97C217D262D89140011D868 /* HeartButton.swift */; };
+		A99030C42695DE3E0045199B /* NewsHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99030C32695DE3E0045199B /* NewsHeaderTableViewCell.swift */; };
+		A99030C62695E1400045199B /* NewsTextTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99030C52695E1400045199B /* NewsTextTableViewCell.swift */; };
+		A99030C82695E5620045199B /* NewsPhotoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99030C72695E5620045199B /* NewsPhotoTableViewCell.swift */; };
+		A99030CA2695E74D0045199B /* NewsInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99030C92695E74D0045199B /* NewsInfoTableViewCell.swift */; };
 		A999175B264EAB9400B368A8 /* GalleryDissmisTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = A999175A264EAB9400B368A8 /* GalleryDissmisTransition.swift */; };
 		A999175F265BCBB300B368A8 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = A999175E265BCBB200B368A8 /* Session.swift */; };
 		A999176B26611E3600B368A8 /* AuthorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A999176A26611E3600B368A8 /* AuthorizationViewController.swift */; };
@@ -92,6 +96,10 @@
 		A967E3B526661B72007A97F2 /* PhotoSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSize.swift; sourceTree = "<group>"; };
 		A97C2178262D882C0011D868 /* LikeCountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeCountView.swift; sourceTree = "<group>"; };
 		A97C217D262D89140011D868 /* HeartButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartButton.swift; sourceTree = "<group>"; };
+		A99030C32695DE3E0045199B /* NewsHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsHeaderTableViewCell.swift; sourceTree = "<group>"; };
+		A99030C52695E1400045199B /* NewsTextTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTextTableViewCell.swift; sourceTree = "<group>"; };
+		A99030C72695E5620045199B /* NewsPhotoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsPhotoTableViewCell.swift; sourceTree = "<group>"; };
+		A99030C92695E74D0045199B /* NewsInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsInfoTableViewCell.swift; sourceTree = "<group>"; };
 		A999175A264EAB9400B368A8 /* GalleryDissmisTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryDissmisTransition.swift; sourceTree = "<group>"; };
 		A999175E265BCBB200B368A8 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		A999176A26611E3600B368A8 /* AuthorizationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationViewController.swift; sourceTree = "<group>"; };
@@ -148,8 +156,12 @@
 			children = (
 				A908286D2631745D008D0673 /* NewsScreenViewController.swift */,
 				A908287826318FF0008D0673 /* NewsTableViewCell.swift */,
-				A908287F2632D8D4008D0673 /* MosaicLayout.swift */,
 				A908288226344369008D0673 /* PhotoCollectionViewCell.swift */,
+				A908287F2632D8D4008D0673 /* MosaicLayout.swift */,
+				A99030C32695DE3E0045199B /* NewsHeaderTableViewCell.swift */,
+				A99030C52695E1400045199B /* NewsTextTableViewCell.swift */,
+				A99030C72695E5620045199B /* NewsPhotoTableViewCell.swift */,
+				A99030C92695E74D0045199B /* NewsInfoTableViewCell.swift */,
 			);
 			path = NewsScreen;
 			sourceTree = "<group>";
@@ -265,6 +277,7 @@
 				A9658511267388B200C648B1 /* DataStorageOld.swift */,
 				A9DAF5C4261B0B4600C7BCB5 /* SceneDelegate.swift */,
 				A9DAF5C6261B0B4600C7BCB5 /* EntranceViewController.swift */,
+				A999176A26611E3600B368A8 /* AuthorizationViewController.swift */,
 				A9DAF5E526258AB600C7BCB5 /* TabBarController.swift */,
 				A9DAF5C8261B0B4600C7BCB5 /* Main.storyboard */,
 				A9DAF5CB261B0B4800C7BCB5 /* Assets.xcassets */,
@@ -273,7 +286,6 @@
 				A9DAF6002626D0AB00C7BCB5 /* Friends */,
 				A9DAF6012626D0EE00C7BCB5 /* Groups */,
 				A908286C26317401008D0673 /* NewsScreen */,
-				A999176A26611E3600B368A8 /* AuthorizationViewController.swift */,
 			);
 			path = clientVK;
 			sourceTree = "<group>";
@@ -435,15 +447,18 @@
 				A91047DD26285EB600B216DB /* MyGroupTableViewController.swift in Sources */,
 				A999176F26612A4E00B368A8 /* VKAPI.swift in Sources */,
 				A9DAF5EE2625989500C7BCB5 /* Group.swift in Sources */,
+				A99030C42695DE3E0045199B /* NewsHeaderTableViewCell.swift in Sources */,
 				A96585172680BD4500C648B1 /* FavouriteGroupsTableViewController.swift in Sources */,
 				A9DAF5F42625B6B100C7BCB5 /* UserTableViewCell.swift in Sources */,
 				A95B3504264D563D008607EE /* RotateInteractiveTransition.swift in Sources */,
 				A90828802632D8D4008D0673 /* MosaicLayout.swift in Sources */,
 				A908288E26396338008D0673 /* MySearchBarView.swift in Sources */,
+				A99030C62695E1400045199B /* NewsTextTableViewCell.swift in Sources */,
 				A965850B2670BDC800C648B1 /* HasIdProtocol.swift in Sources */,
 				A999175B264EAB9400B368A8 /* GalleryDissmisTransition.swift in Sources */,
 				A97C2179262D882C0011D868 /* LikeCountView.swift in Sources */,
 				A96585102673850A00C648B1 /* VKService.swift in Sources */,
+				A99030CA2695E74D0045199B /* NewsInfoTableViewCell.swift in Sources */,
 				A9DAF5C7261B0B4600C7BCB5 /* EntranceViewController.swift in Sources */,
 				A967E3B326661A4F007A97F2 /* Photo.swift in Sources */,
 				A9A37AFE262DB4160080E6AE /* AvatarRoundedView.swift in Sources */,
@@ -461,6 +476,7 @@
 				A908286E2631745D008D0673 /* NewsScreenViewController.swift in Sources */,
 				A965850E2673843400C648B1 /* DataStorage.swift in Sources */,
 				A95B34F9264BFC91008607EE /* CustomNavigationController.swift in Sources */,
+				A99030C82695E5620045199B /* NewsPhotoTableViewCell.swift in Sources */,
 				A908288326344369008D0673 /* PhotoCollectionViewCell.swift in Sources */,
 				A9DAF5C5261B0B4600C7BCB5 /* SceneDelegate.swift in Sources */,
 				A9DAF5FB2625BEEB00C7BCB5 /* UserPhotoCollectionViewController.swift in Sources */,
