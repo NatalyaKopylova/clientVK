@@ -46,7 +46,14 @@ class FriendsTableViewController: UITableViewController, UISearchBarDelegate, My
         }
         tableView.backgroundColor = .systemOrange
         
-        service.getFriends()
+        let queue = OperationQueue()
+        let getDataOperation = GetDataOperation()
+        let parseDataOperation = ParseDataOperations()
+        let saveDataOperetion = SaveDataOperation()
+        parseDataOperation.addDependency(getDataOperation)
+        saveDataOperetion.addDependency(parseDataOperation)
+        queue.addOperations([getDataOperation,parseDataOperation,saveDataOperetion], waitUntilFinished: false)
+        
         
         token = usersResult.observe(on: DispatchQueue.main, { _ in
             self.tableView.reloadData()
