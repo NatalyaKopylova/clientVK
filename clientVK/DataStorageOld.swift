@@ -7,10 +7,10 @@
 
 import UIKit
 
-struct UsersWithLetter {
-    let letter: String
-    var users = [User]()
-}
+//struct UsersWithLetter {
+//    let letter: String
+//    var users = [User]()
+//}
 
 class DataStorageOld {
     
@@ -19,30 +19,30 @@ class DataStorageOld {
     private init() {
 //        fillUserArray()
 //        fillGroupsArray()
-//        fillNewsArrey()
+        fillNewsArrey()
     }
+//
+//    var myFrends = [User]()
+//
+//    var allGroups = [Group]()
+//    var myGroups = [Group]()
     
-    var myFrends = [User]()
+    var newsArray = [News]()
     
-    var allGroups = [Group]()
-    var myGroups = [Group]()
-    
-    var newsScreen = [News]()
-    
-    var friendsWithLetter: [UsersWithLetter] {
-        var arr = [UsersWithLetter]()
-        myFrends.forEach { user in
-            guard let firstLetter = user.name.first else { return }
-            if let index = arr.firstIndex(where: { $0.letter == String(firstLetter) }) {
-                arr[index].users.append(user)
-            } else {
-                let newUsersWithLetter = UsersWithLetter(letter: String(firstLetter), users: [user])
-                arr.append(newUsersWithLetter)
-            }
-        }
-        return arr
-    }
-    
+//    var friendsWithLetter: [UsersWithLetter] {
+//        var arr = [UsersWithLetter]()
+//        myFrends.forEach { user in
+//            guard let firstLetter = user.name.first else { return }
+//            if let index = arr.firstIndex(where: { $0.letter == String(firstLetter) }) {
+//                arr[index].users.append(user)
+//            } else {
+//                let newUsersWithLetter = UsersWithLetter(letter: String(firstLetter), users: [user])
+//                arr.append(newUsersWithLetter)
+//            }
+//        }
+//        return arr
+//    }
+//
 //    func fillUserArray() {
 //        let user1photoArray = [UIImage(named: "Ivan"), UIImage(named: "Ivan1"), UIImage(named: "Vasya1")]
 //        let user1 = User(name: "Ваня", age: 12, avatar: UIImage(named: "Ivan"), photoArray: user1photoArray)
@@ -120,17 +120,15 @@ class DataStorageOld {
 //        return allGroups.filter { $0.name.lowercased().contains(text.lowercased()) }
 //    }
 //
-//    func fillNewsArrey() {
-//        let news1 = News(title: "Подойди сюда. Нам давно пора поговорить. Где моя рыбка?!", newsPhotos: [UIImage(named: "conversation")!], like: 100, comment: 0, repost: 0, viewing: 110)
-//        let news2 = News(title: "Приветики!", newsPhotos: [UIImage(named: "hello")!, UIImage(named: "conversation")!], like: 100, comment: 2, repost: 0, viewing: 110)
-//        let news3 = News(title: "Ну пойдем уже погуляем...", newsPhotos: [UIImage(named: "timeOfGames")!, UIImage(named: "hello")!, UIImage(named: "conversation")!], like: 100, comment: 0, repost: 4, viewing: 110)
-//        let news4 = News(title: "Самое время поспать. Уже 11. И не важно, что не ночи.", newsPhotos: [UIImage(named: "sleep")!, UIImage(named: "timeOfGames")!, UIImage(named: "hello")!, UIImage(named: "conversation")!], like: 100, comment: 5, repost: 5, viewing: 115)
-//        let news5 = News(title: "Без сомнения, я самый лучший программист. Что тебе нужно подсказать?", newsPhotos: [UIImage(named: "work")!, UIImage(named: "sleep")!, UIImage(named: "timeOfGames")!, UIImage(named: "hello")!, UIImage(named: "conversation")!], like: 99, comment: 4, repost: 0, viewing: 118)
-//
-//        newsScreen.append(news1)
-//        newsScreen.append(news2)
-//        newsScreen.append(news3)
-//        newsScreen.append(news4)
-//        newsScreen.append(news5)
-//    }
+    func fillNewsArrey() {
+        let news1 = News(autorName: "Иванов Иван", timeOfNewsCreation: "Вчера", text: "Подойди сюда. Нам давно пора поговорить. Где моя рыбка?!", newsPhotos: [UIImage](), like: 100, comment: 0, repost: 0, viewing: 110)
+        let news2 = News(autorName: "Сидорров Сидр", timeOfNewsCreation: "Сегодня", text: nil, newsPhotos: [UIImage(named: "hello")!, UIImage(named: "conversation")!], like: 100, comment: 2, repost: 0, viewing: 110)
+        let news3 = News(autorName: "Слепцов Слепыш", timeOfNewsCreation: "Вчера", text: "Ну пойдем уже погуляем...", newsPhotos: [UIImage(named: "timeOfGames")!, UIImage(named: "hello")!, UIImage(named: "conversation")!], like: 100, comment: 0, repost: 4, viewing: 110)
+        let news4 = News(autorName: "Пацанчик", timeOfNewsCreation: "Сегодня", text: "Самое время поспать. Уже 11. И не важно, что не ночи.", newsPhotos: [UIImage(named: "sleep")!, UIImage(named: "timeOfGames")!, UIImage(named: "hello")!, UIImage(named: "conversation")!], like: 100, comment: 5, repost: 5, viewing: 115)
+        
+        newsArray.append(news1)
+        newsArray.append(news2)
+        newsArray.append(news3)
+        newsArray.append(news4)
+    }
 }

@@ -10,7 +10,10 @@ import UIKit
 
 struct News {
     
-    var title: String
+    var avatar: UIImage?
+    var autorName: String
+    var timeOfNewsCreation: String
+    var text: String?
     var newsPhotos: [UIImage]
     var like: UInt
     var comment: UInt

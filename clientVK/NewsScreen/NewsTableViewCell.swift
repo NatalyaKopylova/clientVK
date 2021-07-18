@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol NewsTableViewCellDelegate: class {
+protocol NewsTableViewCellDelegate: AnyObject {
     func didSelectCell(images: [UIImage], currentIndex: Int, collectionView: UICollectionView)
 }
 
@@ -30,7 +30,7 @@ class NewsTableViewCell: UITableViewCell, UICollectionViewDataSource, UICollecti
     weak var delegate: NewsTableViewCellDelegate?
     
     func configWith(news: News) {
-        titleLabel.text = news.title
+        titleLabel.text = news.text
         likeButton.text = String(news.like)
         commentButton.text = String(news.comment)
         repostButton.text = String(news.repost)
