@@ -33,6 +33,7 @@ PODS:
     - nanopb/encode (= 2.30908.0)
   - nanopb/decode (2.30908.0)
   - nanopb/encode (2.30908.0)
+  - PromiseKit/CorePromise (6.15.3)
   - PromisesObjC (1.2.12)
   - Realm (10.1.4):
     - Realm/Headers (= 10.1.4)
@@ -44,6 +45,7 @@ DEPENDENCIES:
   - Alamofire (~> 5.0)
   - AlamofireImage (~> 4.1)
   - Firebase/Database
+  - PromiseKit/CorePromise (~> 6.8)
   - RealmSwift (= 10.1.4)
 
 SPEC REPOS:
@@ -58,6 +60,7 @@ SPEC REPOS:
     - GoogleUtilities
     - leveldb-library
     - nanopb
+    - PromiseKit
     - PromisesObjC
     - Realm
     - RealmSwift
@@ -73,10 +76,11 @@ SPEC CHECKSUMS:
   GoogleUtilities: f8a43108b38a68eebe8b3540e1f4f2d28843ce20
   leveldb-library: 50c7b45cbd7bf543c81a468fe557a16ae3db8729
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
+  PromiseKit: 3b2b6995e51a954c46dbc550ce3da44fbfb563c5
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
   Realm: 80f4fb2971ccb9adc27a47d0955ae8e533a7030b
   RealmSwift: 0e566ca714edb377bba8ea0811eafcea0b93734e
 
-PODFILE CHECKSUM: eaf4e3469ab8438ae32048d385b0f5e17dab3f3b
+PODFILE CHECKSUM: 53e96b584b2974f59870f9735f466bd77f1a0a5d
 
 COCOAPODS: 1.10.1
