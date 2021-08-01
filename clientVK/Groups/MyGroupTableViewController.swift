@@ -8,6 +8,7 @@
 import UIKit
 import RealmSwift
 import Firebase
+import PromiseKit
 
 class MyGroupTableViewController: UITableViewController, UISearchBarDelegate, MySearchBarViewDelegate {
     
@@ -49,7 +50,16 @@ class MyGroupTableViewController: UITableViewController, UISearchBarDelegate, My
                 print(error)
             }
         
-        service.getGroups()
+        firstly {
+            service.getGroups()
+        }.map { json in
+            self.service.parse(items: json)
+        }.done { groups in
+            self.service.saveGroups(groups: groups)
+        }.catch { error in
+            print(error)
+        }
+        
         token = myGroupsResults.observe(on: DispatchQueue.main, { _ in
             self.tableView.reloadData()
         })

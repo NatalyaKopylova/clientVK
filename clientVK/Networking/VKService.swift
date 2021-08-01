@@ -7,6 +7,7 @@
 
 import Foundation
 import Alamofire
+import PromiseKit
 
 class VKService {
     
@@ -24,18 +25,32 @@ class VKService {
         }.resume()
     }
     
-    func getGroups(completion: (() -> Void)? = nil) {
+    func getGroups(completion: (([[String : Any]]) -> Void)? = nil) {
         AF.request(VKAPI.getGroups(fields: "description")).response { (response) in
             guard let items = self.handleResponse(response) else {
-                completion?()
+                completion?([[String : Any]]())
                 return
             }
-            let groups = items.map { (item) -> Group in
-                return Group(json: item)
-            }
-            DataStorage.saveDataToRealm(objects: groups)
-            completion?()
+            completion?(items)
         }.resume()
+    }
+    
+    func parse(items: [[String : Any]] ) -> [Group] {
+        return items.map { (item) -> Group in
+            return Group(json: item)
+        }
+    }
+    
+    func saveGroups(groups: [Group]) {
+        DataStorage.saveDataToRealm(objects: groups)
+    }
+    
+    func getGroups() -> Promise<[[String : Any]]> {
+        return Promise { seal in
+            getGroups { groups in
+                seal.resolve(groups, nil)
+            }
+        }
     }
     
     func getPhotos(ownerId: Int, completion: (() -> Void)? = nil) {

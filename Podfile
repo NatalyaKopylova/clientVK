@@ -9,4 +9,5 @@ target 'clientVK' do
   # Pods for clientVK
   pod 'RealmSwift', '=10.1.4'
   pod 'Firebase/Database'
+  pod 'PromiseKit/CorePromise', '~> 6.8'
 end
