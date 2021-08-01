@@ -52,6 +52,48 @@ class VKService {
         }.resume()
     }
     
+    func getNews(completion: (([News]) -> Void)? = nil) {
+        DispatchQueue.global().async {
+            AF.request(VKAPI.getNews).response { (response) in
+                guard let items = self.handleResponse(response) else {
+                    completion?([News]())
+                    return
+                }
+                completion?(items.map({ News(json: $0) }))
+            }.resume()
+        }
+    }
+    
+    func getUser(id: Int, completion: (() -> Void)? = nil) {
+        DispatchQueue.global().async {
+            AF.request(VKAPI.getUser(id: id)).response { (response) in
+                let responseData = try! JSONSerialization.jsonObject(with: response.data!) as! [String: Any]
+                guard let res = responseData["response"] as? [String: Any] else {
+                    completion?()
+                    return
+                }
+                let user = User(json: res)
+                DataStorage.saveDataToRealm(objects: [user])
+                completion?()
+            }.resume()
+        }
+    }
+    
+    func getGroup(id: Int, completion: (() -> Void)? = nil) {
+        DispatchQueue.global().async {
+            AF.request(VKAPI.getGroup(id: id)).response { (response) in
+                let responseData = try! JSONSerialization.jsonObject(with: response.data!) as! [String: Any]
+                guard let res = responseData["response"] as? [String: Any] else {
+                    completion?()
+                    return
+                }
+                let group = Group(json: res)
+                DataStorage.saveDataToRealm(objects: [group])
+                completion?()
+            }.resume()
+        }
+    }
+    
     private func handleResponse(_ response: AFDataResponse<Data?>) -> [[String: Any]]? {
         let responseData = try! JSONSerialization.jsonObject(with: response.data!) as! [String: Any]
         guard let res = responseData["response"] as? [String: Any] else {

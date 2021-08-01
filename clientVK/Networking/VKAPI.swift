@@ -14,19 +14,12 @@ enum VKAPI: URLRequestConvertible {
     case getPhotos(ownerId: Int)
     case getGroups(fields: String)
     case searchGroups
-    
+    case getNews
+    case getUser(id: Int)
+    case getGroup(id: Int)
     
     var method: HTTPMethod {
-        switch self {
-        case .getFriends:
-            return .get
-        case .getPhotos:
-            return .get
-        case .getGroups:
-            return .get
-        case .searchGroups:
-            return .get
-        }
+        .get
     }
     
     var baseUrl: String { "https://api.vk.com/method" }
@@ -41,6 +34,12 @@ enum VKAPI: URLRequestConvertible {
             return "groups.get"
         case .searchGroups:
             return "searchGroups.get"
+        case .getNews:
+            return "newsfeed.get"
+        case .getUser:
+            return "users.get"
+        case .getGroup:
+            return "groups.getById"
         }
     }
     
@@ -59,6 +58,12 @@ enum VKAPI: URLRequestConvertible {
         case .getGroups(let fields):
             params["fields"] = fields
             params["extended"] = 1
+        case .getNews:
+            params["filters"] = "post,photo"
+        case .getUser(let id):
+            params["user_ids"] = id
+        case .getGroup(let id):
+            params["group_id"] = id
         case .searchGroups:
             break
         }

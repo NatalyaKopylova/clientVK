@@ -7,13 +7,20 @@
 
 import UIKit
 
-class NewsScreenViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NewsTableViewCellDelegate {
+class NewsScreenViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
     
+    let service = VKService()
+    var news = [News]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.reloadData()
+        service.getNews(completion: {news in self.news = news
+            self.tableView.reloadData()
+        })
+        
+
     }
     
     func makeInfoCell(newsItem: News) -> NewsInfoTableViewCell {
@@ -29,11 +36,11 @@ class NewsScreenViewController: UIViewController, UITableViewDelegate, UITableVi
     // MARK: - UITableViewDataSource
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        DataStorageOld.shared.newsArray.count
+        news.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let newsItem = DataStorageOld.shared.newsArray[section]
+        let newsItem = news[section]
         let hasText = newsItem.text != nil
         let hasPhoto = newsItem.newsPhotos.count > 0
         if hasText && hasPhoto { return 4 }
@@ -42,16 +49,15 @@ class NewsScreenViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let newsItem = DataStorageOld.shared.newsArray[indexPath.section]
+        let newsItem = news[indexPath.section]
         let hasText = newsItem.text != nil
         let hasPhoto = newsItem.newsPhotos.count > 0
         var cell = UITableViewCell()
         switch indexPath.row {
         case 0:
             let headerCell = tableView.dequeueReusableCell(withIdentifier: "NewsHeaderTableViewCell") as! NewsHeaderTableViewCell
-            headerCell.avatarImageView.image = newsItem.avatar
-            headerCell.headerNewsLabel.text = newsItem.autorName
-            headerCell.timeOfNewsCreationLabel.text = newsItem.timeOfNewsCreation
+            headerCell.sourceId = newsItem.sourceId
+            headerCell.timeOfNewsCreationLabel.text = newsItem.timeOfNewsCreation.string("d MMMM yyyy H:mm")
             cell = headerCell
             
         case 1:

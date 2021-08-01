@@ -6,12 +6,13 @@
 //
 
 import UIKit
+import AlamofireImage
 
 class NewsPhotoTableViewCell: UITableViewCell, UICollectionViewDataSource {
 
     @IBOutlet weak var photosCollectionView: UICollectionView!
 
-    var photos = [UIImage]() {
+    var photos = [Photo]() {
         didSet {
             photosCollectionView.dataSource = self
             photosCollectionView.reloadData()
@@ -26,7 +27,9 @@ class NewsPhotoTableViewCell: UITableViewCell, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: PhotoCollectionViewCell.self), for: indexPath) as! PhotoCollectionViewCell
-        cell.imageView.image = photos[indexPath.row]
+        if let stringUrl = photos[indexPath.row].sizes.first(where: { $0.type == "x" })?.url, let url = URL(string: stringUrl) {
+            cell.imageView.af.setImage(withURL: url)
+        }
         return cell
     }
     override func prepareForReuse() {
