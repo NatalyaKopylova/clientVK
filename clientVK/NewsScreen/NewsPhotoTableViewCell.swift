@@ -28,7 +28,7 @@ class NewsPhotoTableViewCell: UITableViewCell, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: PhotoCollectionViewCell.self), for: indexPath) as! PhotoCollectionViewCell
         if let stringUrl = photos[indexPath.row].sizes.first(where: { $0.type == "x" })?.url, let url = URL(string: stringUrl) {
-            cell.imageView.af.setImage(withURL: url)
+            cell.imageView.setImage(at: url)
         }
         return cell
     }

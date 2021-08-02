@@ -50,7 +50,7 @@ class UserPhotoCollectionViewController: UICollectionViewController, UICollectio
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: UserPhotosCollectionViewCell.self), for: indexPath) as! UserPhotosCollectionViewCell
         let photo = photos[indexPath.row]
         if let size = photo.sizes.first(where: { $0.type == "m"}), let url = URL(string: size.url) {
-            cell.imageView.af.setImage(withURL: url)
+            cell.imageView.setImage(at: url)
         }
         cell.startAnimate()
     

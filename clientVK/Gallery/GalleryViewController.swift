@@ -78,13 +78,13 @@ class GalleryViewController: UIViewController {
         self.secondaryImageView.transform = .identity
         let photo = photos[self.currentIndex]
         if let size = photo.sizes.first(where: { $0.type == "m"}), let url = URL(string: size.url) {
-            mainImageView.af.setImage(withURL: url)
+            mainImageView.setImage(at: url)
         }
         
         if isLeft {
             let photo = photos[self.currentIndex + 1]
             if let size = photo.sizes.first(where: { $0.type == "m"}), let url = URL(string: size.url) {
-                secondaryImageView.af.setImage(withURL: url)
+                secondaryImageView.setImage(at: url)
             }
             self.secondaryImageView.transform = CGAffineTransform(translationX: UIScreen.main.bounds.width, y: 0)
         }
@@ -92,7 +92,7 @@ class GalleryViewController: UIViewController {
             self.secondaryImageView.transform = CGAffineTransform(translationX: -UIScreen.main.bounds.width, y: 0)
             let photo = photos[self.currentIndex - 1]
             if let size = photo.sizes.first(where: { $0.type == "m"}), let url = URL(string: size.url) {
-                secondaryImageView.af.setImage(withURL: url)
+                secondaryImageView.setImage(at: url)
             }
         }
     }
@@ -108,7 +108,7 @@ class GalleryViewController: UIViewController {
         }
         let photo = photos[self.currentIndex]
         if let size = photo.sizes.first(where: { $0.type == "m"}), let url = URL(string: size.url) {
-            mainImageView.af.setImage(withURL: url)
+            mainImageView.setImage(at: url)
         }
         photoGalleryView.bringSubviewToFront(self.mainImageView)
         self.customPageView.currentPage = self.currentIndex
@@ -126,7 +126,7 @@ class GalleryViewController: UIViewController {
             self.mainImageView.transform = .identity
             let photo = photos[self.currentIndex]
             if let size = photo.sizes.first(where: { $0.type == "m"}), let url = URL(string: size.url) {
-                mainImageView.af.setImage(withURL: url)
+                mainImageView.setImage(at: url)
             }
             self.secondaryImageView.transform = .identity
             photoGalleryView.bringSubviewToFront(self.mainImageView)
@@ -249,7 +249,7 @@ class GalleryViewController: UIViewController {
         self.photos = images
         let photo = photos[self.currentIndex]
         if let size = photo.sizes.first(where: { $0.type == "m"}), let url = URL(string: size.url) {
-            mainImageView.af.setImage(withURL: url)
+            mainImageView.setImage(at: url)
         }
         self.currentIndex = currentIndex
         customPageView.numberOfPages = self.photos.count

@@ -26,7 +26,7 @@ class NewsHeaderTableViewCell: UITableViewCell {
         if let user = realm.objects(User.self).filter("id == \(sourceId)").first {
             headerNewsLabel.text = user.name
             if let avatarUrl = user.avatar, let url = URL(string: avatarUrl) {
-                avatarImageView.af.setImage(withURL: url)
+                avatarImageView.setImage(at: url)
             }
         } else {
             VKService().getUser(id: sourceId) { [weak self] in
@@ -34,7 +34,7 @@ class NewsHeaderTableViewCell: UITableViewCell {
                 let user = realm.objects(User.self).filter("id == \(self.sourceId)").first!
                 self.headerNewsLabel.text = user.name
                 if let avatarUrl = user.avatar, let url = URL(string: avatarUrl) {
-                    self.avatarImageView.af.setImage(withURL: url)
+                    self.avatarImageView.setImage(at: url)
                 }
             }
         }
@@ -45,7 +45,7 @@ class NewsHeaderTableViewCell: UITableViewCell {
         if let group = realm.objects(Group.self).filter("id == \(-sourceId)").first {
             headerNewsLabel.text = group.name
             if let avatarUrl = group.groupImage, let url = URL(string: avatarUrl) {
-                avatarImageView.af.setImage(withURL: url)
+                avatarImageView.setImage(at: url)
             }
         } else {
             VKService().getGroup(id: sourceId) { [weak self] in
@@ -53,7 +53,7 @@ class NewsHeaderTableViewCell: UITableViewCell {
                 let group = realm.objects(Group.self).filter("id == \(-self.sourceId)").first!
                 self.headerNewsLabel.text = group.name
                 if let avatarUrl = group.groupImage, let url = URL(string: avatarUrl) {
-                    self.avatarImageView.af.setImage(withURL: url)
+                    self.avatarImageView.setImage(at: url)
                 }
             }
         }
