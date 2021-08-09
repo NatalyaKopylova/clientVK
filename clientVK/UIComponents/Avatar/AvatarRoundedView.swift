@@ -13,6 +13,10 @@ class AvatarRoundedView: UIView {
     let avatar = UIImageView()
     let shadow = UIView()
     
+    override var frame: CGRect {
+        didSet { configSubviews() }
+    }
+    
     var didTap: (() -> Void)?
     
     @IBInspectable var shadowOpacity: Float {

@@ -19,7 +19,8 @@ class FriendsTableViewController: UITableViewController, UISearchBarDelegate, My
     }
     
     func cancelPressed() {
-        searchText = nil
+        searchText = ""
+        tableView.reloadData()
     }
     
     let showUsersPhotosIdentifier = "showUsersPhotos"
@@ -45,6 +46,7 @@ class FriendsTableViewController: UITableViewController, UISearchBarDelegate, My
             print(error)
         }
         tableView.backgroundColor = .systemOrange
+        tableView.register(UserTableViewCell.self, forCellReuseIdentifier: "UserTableViewCell")
         
         let queue = OperationQueue()
         let getDataOperation = GetDataOperation()
@@ -79,14 +81,12 @@ class FriendsTableViewController: UITableViewController, UISearchBarDelegate, My
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: UserTableViewCell.self), for: indexPath) as! UserTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "UserTableViewCell", for: indexPath) as! UserTableViewCell
         let user = users[indexPath.row]
         cell.nameLabel.text = user.name
         if let avatarUrl = user.avatar, let url = URL(string: avatarUrl) {
-            cell.avatar.avatar.setImage(at: url)
+            cell.avatar.setImage(at: url)
         }
-
-        cell.setNeedsLayout()
         return cell
     }
    
