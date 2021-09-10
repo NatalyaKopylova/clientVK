@@ -7,13 +7,16 @@
 
 import UIKit
 
-class NewsScreenViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class NewsScreenViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITableViewDataSourcePrefetching {
     
     @IBOutlet weak var tableView: UITableView!
     
     let service = VKService()
     var news = [News]()
-     
+    var nextFrom = ""
+    let refreshControl = UIRefreshControl()
+    var isLoading = false
+    
     private let formatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "d MMMM yyyy H:mm"
@@ -23,9 +26,11 @@ class NewsScreenViewController: UIViewController, UITableViewDelegate, UITableVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        service.getNews(completion: {news in self.news = news
-            self.tableView.reloadData()
-        })
+        
+        refreshControl.tintColor = .systemOrange
+        refreshControl.addTarget(self, action: #selector(refreshNews), for: .valueChanged)
+        tableView.addSubview(refreshControl)
+        refreshNews()
     }
     
     func makeInfoCell(newsItem: News) -> NewsInfoTableViewCell {
@@ -35,6 +40,19 @@ class NewsScreenViewController: UIViewController, UITableViewDelegate, UITableVi
         infoCell.repostButton.text = String(newsItem.repost)
         infoCell.viewsCountLabel.text = String(newsItem.viewing)
         return infoCell
+    }
+    
+    @objc func refreshNews() {
+        refreshControl.beginRefreshing()
+        let startTime = news.first?.timeOfNewsCreation.timeIntervalSince1970
+        service.getNews(startFrom: nil, startTime: startTime) { newNews, nextFrom in
+            self.refreshControl.endRefreshing()
+            self.nextFrom = nextFrom
+            guard newNews.count > 0 else { return }
+            self.news = newNews + self.news
+            let indexSet = IndexSet(integersIn: 0..<newNews.count)
+            self.tableView.insertSections(indexSet, with: .automatic)
+        }
     }
     
     
@@ -73,6 +91,13 @@ class NewsScreenViewController: UIViewController, UITableViewDelegate, UITableVi
             } else if !hasText && hasPhoto {
                 let photoCell = tableView.dequeueReusableCell(withIdentifier: "NewsPhotoTableViewCell") as! NewsPhotoTableViewCell
                 photoCell.photos = newsItem.newsPhotos
+                if newsItem.newsPhotos.count == 1,
+                   let aspectRatio = newsItem.newsPhotos.first?.sizes.first(where: { $0.type == "x" })?.aspectRatio {
+                    photoCell.aspect = photoCell.aspect.setMultiplier(multiplier: aspectRatio)
+                } else {
+                    photoCell.aspect = photoCell.aspect.setMultiplier(multiplier: 1)
+                }
+
                 cell = photoCell
             } else {
                 cell = makeInfoCell(newsItem: newsItem)
@@ -82,6 +107,12 @@ class NewsScreenViewController: UIViewController, UITableViewDelegate, UITableVi
             if hasText && hasPhoto {
                 let photoCell = tableView.dequeueReusableCell(withIdentifier: "NewsPhotoTableViewCell") as! NewsPhotoTableViewCell
                 photoCell.photos = newsItem.newsPhotos
+                if newsItem.newsPhotos.count == 1,
+                   let aspectRatio = newsItem.newsPhotos.first?.sizes.first(where: { $0.type == "x" })?.aspectRatio {
+                    photoCell.aspect = photoCell.aspect.setMultiplier(multiplier: aspectRatio)
+                } else {
+                    photoCell.aspect = photoCell.aspect.setMultiplier(multiplier: 1)
+                }
                 cell = photoCell
             } else if !hasText && !hasPhoto {
                 break
@@ -130,4 +161,52 @@ class NewsScreenViewController: UIViewController, UITableViewDelegate, UITableVi
 //        self.present(galleryVC, animated: true, completion: nil)
     }
     
+    //MARK: - UITableViewDataSourcePrefetching
+    
+    func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
+        guard let maxSection = indexPaths.map({ $0.section }).max() else { return }
+        if maxSection > news.count - 3, !isLoading {
+            isLoading = true
+            service.getNews(startFrom: nextFrom, startTime: nil) { news, startFrom in
+                let indexSet = IndexSet(integersIn: self.news.count ..< self.news.count + news.count)
+                self.news.append(contentsOf: news)
+                self.tableView.insertSections(indexSet, with: .automatic)
+                self.isLoading = false
+            }
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, cancelPrefetchingForRowsAt indexPaths: [IndexPath]) {
+        
+    }
+}
+
+
+extension NSLayoutConstraint {
+    /**
+     Change multiplier constraint
+
+     - parameter multiplier: CGFloat
+     - returns: NSLayoutConstraint
+    */
+    func setMultiplier(multiplier:CGFloat) -> NSLayoutConstraint {
+
+        NSLayoutConstraint.deactivate([self])
+
+        let newConstraint = NSLayoutConstraint(
+            item: firstItem as Any,
+            attribute: firstAttribute,
+            relatedBy: relation,
+            toItem: secondItem,
+            attribute: secondAttribute,
+            multiplier: multiplier,
+            constant: constant)
+
+        newConstraint.priority = priority
+        newConstraint.shouldBeArchived = self.shouldBeArchived
+        newConstraint.identifier = self.identifier
+
+        NSLayoutConstraint.activate([newConstraint])
+        return newConstraint
+    }
 }

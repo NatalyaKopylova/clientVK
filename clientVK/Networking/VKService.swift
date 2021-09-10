@@ -9,6 +9,8 @@ import Foundation
 import Alamofire
 import PromiseKit
 
+typealias JSON = [String: Any]
+
 class VKService {
     
     func getFriends(completion: (() -> Void)? = nil) {
@@ -67,14 +69,20 @@ class VKService {
         }.resume()
     }
     
-    func getNews(completion: (([News]) -> Void)? = nil) {
+    func getNews(startFrom: String?, startTime: Double? = nil, completion: (([News], String) -> Void)? = nil) {
         DispatchQueue.global().async {
-            AF.request(VKAPI.getNews).response { (response) in
-                guard let items = self.handleResponse(response) else {
-                    completion?([News]())
+            AF.request(VKAPI.getNews(startFrom: startFrom, startTime: startTime)).response { (response) in
+                guard let items = self.handleResponse(response),
+                      let data = response.data,
+                      let responseJson = try! JSONSerialization.jsonObject(with: data) as? JSON,
+                      let vkResponse = responseJson["response"] as? [String: Any],
+                      let nextFrom = vkResponse["next_from"] as? String
+                else {
+                    completion?([News](), "")
                     return
                 }
-                completion?(items.map({ News(json: $0) }))
+                
+                completion?(items.map({ News(json: $0) }), nextFrom)
             }.resume()
         }
     }
@@ -83,12 +91,12 @@ class VKService {
         DispatchQueue.global().async {
             AF.request(VKAPI.getUser(id: id)).response { (response) in
                 let responseData = try! JSONSerialization.jsonObject(with: response.data!) as! [String: Any]
-                guard let res = responseData["response"] as? [String: Any] else {
+                guard let res = responseData["response"] as? [[String: Any]] else {
                     completion?()
                     return
                 }
-                let user = User(json: res)
-                DataStorage.saveDataToRealm(objects: [user])
+                let users = res.map { User(json: $0) }
+                DataStorage.saveDataToRealm(objects: users)
                 completion?()
             }.resume()
         }
@@ -98,12 +106,13 @@ class VKService {
         DispatchQueue.global().async {
             AF.request(VKAPI.getGroup(id: id)).response { (response) in
                 let responseData = try! JSONSerialization.jsonObject(with: response.data!) as! [String: Any]
-                guard let res = responseData["response"] as? [String: Any] else {
+                guard let res = responseData["response"] as? [[String: Any]] else {
+                    print("id is", id)
                     completion?()
                     return
                 }
-                let group = Group(json: res)
-                DataStorage.saveDataToRealm(objects: [group])
+                let groups = res.map { Group(json: $0) }
+                DataStorage.saveDataToRealm(objects: groups)
                 completion?()
             }.resume()
         }

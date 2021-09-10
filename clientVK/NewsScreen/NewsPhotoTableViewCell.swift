@@ -11,7 +11,8 @@ import AlamofireImage
 class NewsPhotoTableViewCell: UITableViewCell, UICollectionViewDataSource {
 
     @IBOutlet weak var photosCollectionView: UICollectionView!
-
+    @IBOutlet weak var aspect: NSLayoutConstraint!
+    
     var photos = [Photo]() {
         didSet {
             photosCollectionView.dataSource = self

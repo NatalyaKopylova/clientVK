@@ -14,7 +14,7 @@ enum VKAPI: URLRequestConvertible {
     case getPhotos(ownerId: Int)
     case getGroups(fields: String)
     case searchGroups
-    case getNews
+    case getNews(startFrom: String?, startTime: Double?)
     case getUser(id: Int)
     case getGroup(id: Int)
     
@@ -58,7 +58,13 @@ enum VKAPI: URLRequestConvertible {
         case .getGroups(let fields):
             params["fields"] = fields
             params["extended"] = 1
-        case .getNews:
+        case .getNews(let startFrom, let startTime):
+            if let startFrom = startFrom {
+                params["start_from"] = startFrom
+            }
+            if let startTime = startTime {
+                params["start_time"] = Int(startTime) + 1
+            }
             params["filters"] = "post,photo"
         case .getUser(let id):
             params["user_ids"] = id
