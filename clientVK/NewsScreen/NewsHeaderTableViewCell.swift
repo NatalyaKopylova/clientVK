@@ -48,7 +48,7 @@ class NewsHeaderTableViewCell: UITableViewCell {
                 avatarImageView.setImage(at: url)
             }
         } else {
-            VKService().getGroup(id: sourceId) { [weak self] in
+            VKService().getGroup(id: -sourceId) { [weak self] in
                 guard let self = self else { return }
                 let group = realm.objects(Group.self).filter("id == \(-self.sourceId)").first!
                 self.headerNewsLabel.text = group.name

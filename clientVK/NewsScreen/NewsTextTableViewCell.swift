@@ -10,6 +10,9 @@ import UIKit
 class NewsTextTableViewCell: UITableViewCell {
 
     @IBOutlet weak var textNewsLabel: UILabel!
+    @IBOutlet weak var expandButton: UIButton!
+    
+    var isExpanded: Bool { textNewsLabel.numberOfLines == 0 }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -22,4 +25,13 @@ class NewsTextTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+    @IBAction func changeHeight() {
+        guard let tableView = superview as? UITableView else {
+            return
+        }
+        tableView.beginUpdates()
+        expandButton.setTitle(isExpanded ? "больше" : "меньше" , for: .normal)
+        textNewsLabel.numberOfLines = isExpanded ? 1 : 0
+        tableView.endUpdates()
+    }
 }

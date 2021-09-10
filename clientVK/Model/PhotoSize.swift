@@ -13,7 +13,8 @@ class PhotoSize: Object {
     @objc dynamic var url: String = ""
     @objc dynamic var type: String = ""
     @objc dynamic var width: Int = 0
-    
+    var aspectRatio: CGFloat { CGFloat(width)/CGFloat(height) }
+        
     convenience init (json: [String: Any]) {
         self.init()
         self.height = json["height"] as! Int
