@@ -83,7 +83,7 @@ class FriendsTableViewController: UITableViewController, UISearchBarDelegate, My
         let user = users[indexPath.row]
         cell.nameLabel.text = user.name
         if let avatarUrl = user.avatar, let url = URL(string: avatarUrl) {
-            cell.avatar.avatar.af.setImage(withURL: url)
+            cell.avatar.avatar.setImage(at: url)
         }
 
         cell.setNeedsLayout()

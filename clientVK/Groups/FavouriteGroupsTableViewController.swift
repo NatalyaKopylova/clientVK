@@ -44,7 +44,7 @@ class FavouriteGroupsTableViewController: UITableViewController {
         cell.groupNameLabel.text = group.name
         cell.groupDescriptionLabel.text = group.groupDescription
         if let myGroupsUrl = group.groupImage, let url = URL(string: myGroupsUrl) {
-            cell.groupImageView.af.setImage(withURL: url)
+            cell.groupImageView.setImage(at: url)
         }
 
         return cell
