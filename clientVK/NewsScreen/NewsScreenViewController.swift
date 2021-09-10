@@ -13,14 +13,19 @@ class NewsScreenViewController: UIViewController, UITableViewDelegate, UITableVi
     
     let service = VKService()
     var news = [News]()
+     
+    private let formatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "d MMMM yyyy H:mm"
+        formatter.locale = Locale(identifier: "ru_RU")
+        return formatter
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         service.getNews(completion: {news in self.news = news
             self.tableView.reloadData()
         })
-        
-
     }
     
     func makeInfoCell(newsItem: News) -> NewsInfoTableViewCell {
@@ -57,7 +62,7 @@ class NewsScreenViewController: UIViewController, UITableViewDelegate, UITableVi
         case 0:
             let headerCell = tableView.dequeueReusableCell(withIdentifier: "NewsHeaderTableViewCell") as! NewsHeaderTableViewCell
             headerCell.sourceId = newsItem.sourceId
-            headerCell.timeOfNewsCreationLabel.text = newsItem.timeOfNewsCreation.string("d MMMM yyyy H:mm")
+            headerCell.timeOfNewsCreationLabel.text = formatter.string(from: newsItem.timeOfNewsCreation)
             cell = headerCell
             
         case 1:

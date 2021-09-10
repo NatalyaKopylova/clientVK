@@ -25,6 +25,7 @@
 		A910DB99269F67D100CC975E /* ParseDataOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A910DB98269F67D100CC975E /* ParseDataOperation.swift */; };
 		A910DB9B269F682800CC975E /* SaveDataOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A910DB9A269F682800CC975E /* SaveDataOperation.swift */; };
 		A9250BF426B81667001EA004 /* PhotoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9250BF326B81667001EA004 /* PhotoService.swift */; };
+		A9250BF626B9BFCC001EA004 /* AsyncOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9250BF526B9BFCC001EA004 /* AsyncOperation.swift */; };
 		A95B34EC263C2764008607EE /* GalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95B34EB263C2764008607EE /* GalleryViewController.swift */; };
 		A95B34F9264BFC91008607EE /* CustomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95B34F8264BFC91008607EE /* CustomNavigationController.swift */; };
 		A95B34FC264BFE1F008607EE /* RotatePushAnimatedTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95B34FB264BFE1F008607EE /* RotatePushAnimatedTransition.swift */; };
@@ -87,6 +88,7 @@
 		A910DB98269F67D100CC975E /* ParseDataOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseDataOperation.swift; sourceTree = "<group>"; };
 		A910DB9A269F682800CC975E /* SaveDataOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveDataOperation.swift; sourceTree = "<group>"; };
 		A9250BF326B81667001EA004 /* PhotoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoService.swift; sourceTree = "<group>"; };
+		A9250BF526B9BFCC001EA004 /* AsyncOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncOperation.swift; sourceTree = "<group>"; };
 		A95B34EB263C2764008607EE /* GalleryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryViewController.swift; sourceTree = "<group>"; };
 		A95B34F8264BFC91008607EE /* CustomNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationController.swift; sourceTree = "<group>"; };
 		A95B34FB264BFE1F008607EE /* RotatePushAnimatedTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotatePushAnimatedTransition.swift; sourceTree = "<group>"; };
@@ -188,6 +190,7 @@
 				A910DB96269F675100CC975E /* GetDataOperation.swift */,
 				A910DB98269F67D100CC975E /* ParseDataOperation.swift */,
 				A910DB9A269F682800CC975E /* SaveDataOperation.swift */,
+				A9250BF526B9BFCC001EA004 /* AsyncOperation.swift */,
 			);
 			path = Operations;
 			sourceTree = "<group>";
@@ -483,6 +486,7 @@
 				A9DAF5F42625B6B100C7BCB5 /* UserTableViewCell.swift in Sources */,
 				A95B3504264D563D008607EE /* RotateInteractiveTransition.swift in Sources */,
 				A90828802632D8D4008D0673 /* MosaicLayout.swift in Sources */,
+				A9250BF626B9BFCC001EA004 /* AsyncOperation.swift in Sources */,
 				A908288E26396338008D0673 /* MySearchBarView.swift in Sources */,
 				A99030C62695E1400045199B /* NewsTextTableViewCell.swift in Sources */,
 				A965850B2670BDC800C648B1 /* HasIdProtocol.swift in Sources */,

@@ -206,56 +206,20 @@
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="UserTableViewCell" rowHeight="128" id="Un9-27-pC8" customClass="UserTableViewCell" customModule="clientVK" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="24.5" width="414" height="128"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Un9-27-pC8" id="2pr-iW-3kh">
+                                <tableViewCellContentView key="contentView" autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Un9-27-pC8" id="2pr-iW-3kh">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="128"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6kg-tV-Num">
-                                            <rect key="frame" x="142" y="54" width="256" height="20.5"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6kg-tV-Num">
+                                            <rect key="frame" x="357" y="54" width="41" height="20"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AzD-Z9-Id0">
-                                            <rect key="frame" x="142" y="82.5" width="256" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MqM-Jc-yJw" customClass="AvatarRoundedView" customModule="clientVK" customModuleProvider="target">
-                                            <rect key="frame" x="20" y="11" width="106" height="106"/>
-                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" secondItem="MqM-Jc-yJw" secondAttribute="height" multiplier="1:1" id="CgG-c1-PMi"/>
-                                            </constraints>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
-                                                    <real key="value" value="10"/>
-                                                </userDefinedRuntimeAttribute>
-                                                <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
-                                                    <color key="value" systemColor="systemOrangeColor"/>
-                                                </userDefinedRuntimeAttribute>
-                                                <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
-                                                    <real key="value" value="1"/>
-                                                </userDefinedRuntimeAttribute>
-                                            </userDefinedRuntimeAttributes>
-                                        </view>
                                     </subviews>
-                                    <constraints>
-                                        <constraint firstItem="MqM-Jc-yJw" firstAttribute="bottom" secondItem="2pr-iW-3kh" secondAttribute="bottomMargin" id="0ha-Qk-Ss5"/>
-                                        <constraint firstAttribute="trailing" secondItem="6kg-tV-Num" secondAttribute="trailing" constant="16" id="4z5-Wm-AYD"/>
-                                        <constraint firstItem="AzD-Z9-Id0" firstAttribute="leading" secondItem="MqM-Jc-yJw" secondAttribute="trailing" constant="16" id="ALG-Hg-Y2U"/>
-                                        <constraint firstItem="MqM-Jc-yJw" firstAttribute="top" secondItem="2pr-iW-3kh" secondAttribute="topMargin" id="Gd2-hr-jgE"/>
-                                        <constraint firstItem="AzD-Z9-Id0" firstAttribute="top" secondItem="6kg-tV-Num" secondAttribute="bottom" constant="8" id="LHu-0O-flX"/>
-                                        <constraint firstAttribute="trailing" secondItem="AzD-Z9-Id0" secondAttribute="trailing" constant="16" id="ME8-am-qbP"/>
-                                        <constraint firstItem="6kg-tV-Num" firstAttribute="centerY" secondItem="2pr-iW-3kh" secondAttribute="centerY" id="PHZ-wX-QCl"/>
-                                        <constraint firstItem="MqM-Jc-yJw" firstAttribute="leading" secondItem="2pr-iW-3kh" secondAttribute="leadingMargin" id="bp2-3w-DeV"/>
-                                        <constraint firstItem="6kg-tV-Num" firstAttribute="leading" secondItem="MqM-Jc-yJw" secondAttribute="trailing" constant="16" id="xeC-72-dxJ"/>
-                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="ageLabel" destination="AzD-Z9-Id0" id="5vn-dj-bAT"/>
-                                    <outlet property="avatar" destination="MqM-Jc-yJw" id="bnh-Ps-FIT"/>
                                     <outlet property="nameLabel" destination="6kg-tV-Num" id="lTY-Yd-7Oo"/>
                                 </connections>
                             </tableViewCell>
@@ -275,7 +239,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iQ7-9l-q7w" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2662" y="-871"/>
+            <point key="canvasLocation" x="2660.8695652173915" y="-871.20535714285711"/>
         </scene>
         <!--Мои группы-->
         <scene sceneID="tnV-en-gmL">

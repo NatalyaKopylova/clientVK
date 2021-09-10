@@ -8,16 +8,17 @@
 import Foundation
 import Alamofire
 
-class GetDataOperation: Operation {
+class GetDataOperation: AsyncOperation {
     
     var outputData: Data?
-     
+ 
     override func main() {
-        let sem = DispatchSemaphore(value: 0)
-        AF.request(VKAPI.getFriends(fields: "nickname,sex,photo_100")).response { (response) in
-            self.outputData = response.data
-            sem.signal()
+       
+        AF.request(VKAPI.getFriends(fields: "nickname,sex,photo_100")).response { [weak self] response in
+            self?.outputData = response.data
+            self?.finished()
+           
         }.resume()
-        sem.wait()
+        
     }
 }
